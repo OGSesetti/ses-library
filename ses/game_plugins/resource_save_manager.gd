@@ -4,9 +4,8 @@ extends Resource
 const local_folder_path = SesConfig.save_folder_path
 const user_folder_path = SesConfig.user_folder_path
 const auto_save_name : String = "autosave.tres"
-const manual_save_name : String = SesConfig.save_folder_path
 const enable_user_directory = SesConfig.enable_user_directory
-const manual_save_name : String = SesConfig.manual_save_name
+const manual_save_name = SesConfig.manual_save_name
 
 var save_folder : String
 var save_1 : String
