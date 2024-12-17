@@ -1,9 +1,11 @@
 class_name SaveGame
 extends Resource
 
-const local_folder = SesConfig.save_folder_path
-const auto_save_path : String = "autosave.tres"
+const local_folder_path = SesConfig.save_folder_path
+const user_folder_path = SesConfig.user_folder_path
+const auto_save_name : String = "autosave.tres"
 const manual_save_path : String = SesConfig.save_folder_path
+const enable_user_directory = SesConfig.enable_user_directory
 
 var save_folder : String
 var save_1 : String
@@ -14,11 +16,13 @@ var save_3 : String
 @export var current_level = ""
 @export var inventory = Resource
 @export var common_variables = {}
-
+#jee
 static func load_save_game():
 	pass
 	
-static func write_save_game(): #vittu unohda koko static
+static func write_save_game(auto_save : bool = false):
+	if enable_user_directory == true:
+		var save_path = user_folder_path + "save"
 	#ResourceSaver.save()
 	pass
 	

@@ -9,6 +9,7 @@ const enable_game_settings : bool = true
 
 ##################################save_manager##################################
 const save_folder_path : String = "res://ses/save_files/" #Alternative: "user://"
-
+const user_folder_path : String = "user://"
+const enable_user_directory : bool = false
 
 ################################################################################
