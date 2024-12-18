@@ -1,5 +1,3 @@
-#vaihda tää paska jsoniin
-
 const enable_save_manager : bool = true
 const enable_game_settings : bool = true
 
