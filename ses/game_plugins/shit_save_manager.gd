@@ -1,80 +1,25 @@
-class_name SaveGame
+class_name ShitSaveGame
+extends Resource
 
 var path = SesConfig.save_path
 const auto_save_name: String = "autosave.json"
 const manual_save_name = SesConfig.manual_save_name
 const check_overwrite = SesConfig.check_overwrite
 
-var res = SaveResource.new()
+
 var json = JSON.new()
 
-
-
-#KÄYTÄ VANHAA JÄRJESTELMÄÄ MANUAL SAVEJEN TEKEMISEEN
-#JA TEE PERUS YHDEN TALLENNUKSEN JÄRJESTELMÄ AUTOSAVESTA
-
-func save(name = manual_save_name):
-	var data = {}
-	for property in res.get_property_list():
-		var key = property.name
-		data[key] = res.get(key)
-
-	var json_data = JSON.stringify(data, "\t")
-	var time_stamp = Time.get_date_string_from_system()
-	var file_name = name + "-" + time_stamp + ".json"
+#possible things to save
+@export var settings = {}
+@export var inventory = Resource #possibly no
+@export var root_dict = {
+	"default_dict" = {}
+}
 	
-	var file = FileAccess.open(path + file_name, FileAccess.WRITE)
-	file.store_string(json_data)
-	file.close()
-
-func auto_save():
-	save(auto_save_name)
-	
-	pass
 
 
-func load(name: String = "autosave.json") -> Resource:
-	var file = FileAccess.open(path + name, FileAccess.READ)
-	if not file:
-		push_error("Could not find file: ", name)
-	var json_data = file.get_as_text()
-	var data = json.parse(json_data)
-	if data.error != OK:
-		push_error("Error parsing JSON.")
-	for key in data.result.keys():
-		if res.has_property(key):
-			res.set(key, data.result[key])
-	return res
-
-
-"""
-
-func write_save(data : Dictionary = root_dict, name = manual_save_name) -> bool:
-	var save_data = JSON.stringify(data)
-	var time_stamp = Time.get_date_string_from_system()
-	var file_name = name + "-" + time_stamp + ".json"
-	var file = FileAccess.open(path + file_name, FileAccess.WRITE)
-	file.store_string(save_data)
-	file.close()
-	if FileAccess.file_exists(path + file_name):
-		return(true)
-	else:
-		return(false)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#TODO
+#declare return values
 
 
 func new_variable(key: String, value, address : String = "default_dict") -> bool:
@@ -196,4 +141,3 @@ func get_files(type : int = 1):
 			file_names.sort_custom(func(a, b): return a[timestamp] < b[timestamp])
 			print("save_manager:  fetched ",  counter, " files sorted by oldest to newest.")
 	return file_names
-"""
