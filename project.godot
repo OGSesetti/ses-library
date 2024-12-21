@@ -10,15 +10,32 @@ config_version=5
 
 [application]
 
-config/name="ses library"
-run/main_scene="res://main.tscn"
+config/name="SES-library"
+run/main_scene="res://ses/menus/testmenu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SesLoader="*res://ses/ses_loader.gd"
-SesConfig="*res://ses/ses_config.gd"
+SesLoader="*res://ses/ses_core/ses_loader.gd"
+SesConfig="*res://ses/ses_core/ses_config.gd"
+SaveManager="*res://ses/game_plugins/save_manager.gd"
+Ses="*res://ses/ses_core/ses_middleware.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+window/dpi/allow_hidpi=false
+
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_hinting=2
+theme/default_font_subpixel_positioning=0
+theme/lcd_subpixel_layout=0
 
 [rendering]
 

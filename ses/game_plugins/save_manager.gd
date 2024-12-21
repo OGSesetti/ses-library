@@ -1,199 +1,166 @@
+extends Node
 class_name SaveGame
 
 var path = SesConfig.save_path
-const auto_save_name: String = "autosave.json"
-const manual_save_name = SesConfig.manual_save_name
+const auto_save_name: String = SesConfig.auto_save_name #		ONE SAVE ONLY: always uses the same name and overwrites itself
+const manual_save_name: String = SesConfig.manual_save_name #	UNLIMITED SAVES: adds a timestamp to create an unique name
 const check_overwrite = SesConfig.check_overwrite
 
 var res = SaveResource.new()
 var json = JSON.new()
+var files_list
 
 
+var exclude_keys = [
 
-#KÄYTÄ VANHAA JÄRJESTELMÄÄ MANUAL SAVEJEN TEKEMISEEN
-#JA TEE PERUS YHDEN TALLENNUKSEN JÄRJESTELMÄ AUTOSAVESTA
+#	All keys related to the inner workings of a Resource object need to be excluded. 
+#	Otherwise they get saved to the JSON as empty, and when loading a game they delete
+#	all the important info related to that Resource, breaking it completely
 
-func save(name = manual_save_name):
+"resource_name",
+"resource_path",
+"resource_local_to_scene",
+"script",
+"resource_scene_unique_id",
+"RefCounted",
+"Resource",
+"save_resource.gd"
+
+]
+
+func _ready() -> void:
+	files_list = get_files()
+
+func save_game(n = manual_save_name, autosave : bool = false):
+	if n.strip_edges() == "":
+		n = manual_save_name
+	var file_name
+	var timestamp
 	var data = {}
 	for property in res.get_property_list():
 		var key = property.name
-		data[key] = res.get(key)
-
+		if key not in exclude_keys:
+			data[key] = res.get(key)
+			print("SaveManager: ", key, " added to package")
 	var json_data = JSON.stringify(data, "\t")
-	var time_stamp = Time.get_date_string_from_system()
-	var file_name = name + "-" + time_stamp + ".json"
-	
+
+	if autosave == false:	
+		timestamp = Time.get_datetime_string_from_system()
+		timestamp = timestamp.replace(":", "-").replace("T", " ")
+		file_name = "{0} {1}.json".format(n, timestamp)
+	else:
+		file_name = n + ".json"
+
 	var file = FileAccess.open(path + file_name, FileAccess.WRITE)
+	print("SaveManager: game saved at ", path, file_name)
 	file.store_string(json_data)
 	file.close()
+	files_list = get_files()
+
+
 
 func auto_save():
-	save(auto_save_name)
-	
+	save_game(auto_save_name, true)
 	pass
 
 
-func load(name: String = "autosave.json") -> Resource:
-	var file = FileAccess.open(path + name, FileAccess.READ)
+func load_game(n: String = auto_save_name):
+	if n == "":
+		n = auto_save_name
+	n = n + ".json"
+	var data
+	var file = FileAccess.open(path + n, FileAccess.READ)
+	print("SaveManager: attempting to load: ", path, n)
+
 	if not file:
-		push_error("Could not find file: ", name)
+		push_error("Could not find file: ", n)
+		return(false)
+
 	var json_data = file.get_as_text()
-	var data = json.parse(json_data)
-	if data.error != OK:
-		push_error("Error parsing JSON.")
-	for key in data.result.keys():
-		if res.has_property(key):
-			res.set(key, data.result[key])
+	#print(json_data)
+	var error_status = json.parse(json_data)
+
+	if error_status == OK:
+		data = json.data
+		print("SaveManager: parse successful.")
+	else:
+		push_error("Error parsing JSON-data.")
+		print("SaveManager: ERROR parsing JSON.")
+
+	for key in data.keys():
+		#print(key)
+		if key in res:
+			res.set(key, data[key])
+			print("SaveManager: ", key, " set to ", "'", res.get(key),"'")
+		else:
+			print("SaveManager: ", key, " not found in res. Skipping. If every variable is giving you this shit, check the exclude_keys -array at SaveManager.")
+			pass
+	print("SaveManager: load successful")
+	files_list = get_files()
 	return res
-
-
-"""
-
-func write_save(data : Dictionary = root_dict, name = manual_save_name) -> bool:
-	var save_data = JSON.stringify(data)
-	var time_stamp = Time.get_date_string_from_system()
-	var file_name = name + "-" + time_stamp + ".json"
-	var file = FileAccess.open(path + file_name, FileAccess.WRITE)
-	file.store_string(save_data)
-	file.close()
-	if FileAccess.file_exists(path + file_name):
-		return(true)
-	else:
-		return(false)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-func new_variable(key: String, value, address : String = "default_dict") -> bool:
-	var dict = get_dictionary(address)
-	if dict.has(key):
-		push_error("Variable in selected address already exists.")
-		return false
-	else:
-		dict[key] = value
-		return(true)
-
-
-
-func update_variable(key: String, value, address : String = "default_dict") -> bool:
-	var dict = get_dictionary(address)
-	dict[key] = value
-	return(true)
-
-
-
-func delete_variable(key: String, address : String = "default_dict") -> bool:
-	var dict = get_dictionary(address, false)
-	if dict == !null:
-		if dict.has(key):
-			dict.remove(key)
-			return true
-		else:
-			push_error("Variable in selected address wasn't found.")
-			return(false)
-	else:
-		push_error("Dictionary: ", address, " doesn't exist.")
-		return(false)
-
-
-func get_dictionary(dict_name: String, create_new : bool = true):
-	if root_dict.has(dict_name):
-		var dictionary = root_dict[dict_name]
-		return(dictionary)
-	else:
-		if create_new == true:
-			print("SaveManager.get_dictionary: Dictionary: ", dict_name, " doesn't exist. Creating one.")
-			root_dict[dict_name] = {}
-			var dict = root_dict[dict_name]
-			return(dict)
-		else:
-			return null
-
-
-
-func clear_dictionary(dict_name: String) -> bool:
-	if root_dict.has(dict_name):
-		root_dict[dict_name] = {}
-		return(true)
-	else:
-		push_error("Dictionary: ", dict_name, " doesn't exist.")
-		return(false)
-
-
-func load_save(save_name : String) -> bool:
-	var file_path = path + save_name
-	var file
-	if FileAccess.file_exists(file_path):
-		file = FileAccess.open(file_path, FileAccess.READ)
-		var error = json.parse(file)
-		if error == OK:
-			var save_data = json.data
-			if typeof(save_data) == TYPE_DICTIONARY:
-				root_dict = save_data
-				return true
-			else:
-				push_error("Parsed data from ", save_name, " is not a dictionary.")
-				return false
-		else:
-			push_error("Failed to parse JSON data.")
-			return false
-	else:
-		push_error("File: ", file_path, " doesn't exist.")
-		return false
-
-
-
-func write_save(data : Dictionary = root_dict, name = manual_save_name) -> bool:
-	var save_data = JSON.stringify(data)
-	var time_stamp = Time.get_date_string_from_system()
-	var file_name = name + "-" + time_stamp + ".json"
-	var file = FileAccess.open(path + file_name, FileAccess.WRITE)
-	file.store_string(save_data)
-	file.close()
-	if FileAccess.file_exists(path + file_name):
-		return(true)
-	else:
-		return(false)
 
 
 func get_files(type : int = 1):
 	var file_names = []
 	var dir = DirAccess.open(path)
+	var wtf = dir.get_current_dir()
+	#print("print(dir): ", dir)
+	#print("dir.get_current_dir(): ", wtf)
 	var timestamp
 	var counter : int = 0
 	if dir == null:
 		print("Directory not found.")
 		return(false)
 
-	while dir.get_next():
+	dir.list_dir_begin()
+
+	while true:
 		var current_item = dir.get_next()
-		timestamp = FileAccess.get_modified_time(current_item)
+		if current_item == "":
+			break
+
+		timestamp = FileAccess.get_modified_time(path + "/" + current_item)
 		var save_info = {"Name": current_item, "Timestamp": timestamp}
-		if dir.current_is_file():
+
+		if !dir.current_is_dir():
 			file_names.append(save_info)
+			print("SaveManager: ", current_item, " found")
 			counter += 1
+
 	
 	match type:
 		0:
-			print("save_manager:  fetched ",  counter, " files unsorted.")
+			print("SaveManager: fetched ",  counter, " files unsorted")
 		1:
-			file_names.sort_custom(func(a, b): return a[timestamp] > b[timestamp])
-			print("save_manager:  fetched ",  counter, " files sorted by newest to oldest.")
+			file_names.sort_custom(func(a, b): return a["Timestamp"] > b["Timestamp"])
+			print("SaveManager: fetched ",  counter, " files sorted by newest to oldest")
 		2:
-			file_names.sort_custom(func(a, b): return a[timestamp] < b[timestamp])
-			print("save_manager:  fetched ",  counter, " files sorted by oldest to newest.")
+			file_names.sort_custom(func(a, b): return a["Timestamp"] < b["Timestamp"])
+			print("SaveManager: fetched ",  counter, " files sorted by oldest to newest")
 	return file_names
-"""
+
+
+func set_res_value(k : String, v):
+	if k in res:
+		var p = res.get(k)
+		res.set(k, v)
+		print("SaveManager: variable '", k, "' has been set from '", p, "' to '", v, "'")
+	else:
+		push_error("Variable ", k, " not found in SaveResource.")
+		print("SaveManager: variable '", k, "' not found in SaveResource.")
+
+
+func set_res_variable(k, v):
+	var d = res.get("variables")
+	if typeof(d) != TYPE_DICTIONARY:
+		print("Error: ", d, " is not a Dictionary.")
+		push_error("Variables is either not dictionary or not defined.")
+
+	if d.has(k):
+		d[k] = v
+		print(d)
+		print("SaveManager: variable '", k, "' set to '", v, "'")
+	else:
+		d[k] = v
+		print(d)
+		print("SaveManager: variable '", k , "' added with set value of '", v, "'")

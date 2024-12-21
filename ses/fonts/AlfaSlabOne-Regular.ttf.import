@@ -1,0 +1,40 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://du0pk1ieguc0h"
+path="res://.godot/imported/AlfaSlabOne-Regular.ttf-4595c53824935be4f6a779d9ca4c5282.fontdata"
+
+[deps]
+
+source_file="res://ses/fonts/AlfaSlabOne-Regular.ttf"
+dest_files=["res://.godot/imported/AlfaSlabOne-Regular.ttf-4595c53824935be4f6a779d9ca4c5282.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=true
+hinting=1
+subpixel_positioning=0
+oversampling=1.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "config",
+"size": Vector2i(32, 0),
+"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={}

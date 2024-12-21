@@ -1,0 +1,311 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5q1i8hlwpk3e"]
+
+[ext_resource type="Script" path="res://ses/menus/testmenu.gd" id="1_g0s1k"]
+[ext_resource type="FontFile" uid="uid://du0pk1ieguc0h" path="res://ses/fonts/AlfaSlabOne-Regular.ttf" id="2_662sr"]
+
+[node name="Testmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g0s1k")
+
+[node name="titlecontainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.1
+anchor_right = 0.6
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title text" type="Label" parent="titlecontainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_662sr")
+theme_override_font_sizes/font_size = 60
+text = "SES-library tester"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="listContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="testlists" type="HBoxContainer" parent="listContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SaveManager" type="VBoxContainer" parent="listContainer/testlists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="listContainer/testlists/SaveManager/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "SaveManager"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="manualSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Create manual save"
+
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="autoSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Create autosave"
+
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="loadSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Load save"
+
+[node name="MarginContainer5" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="setResValue" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Set res value"
+
+[node name="MarginContainer6" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="setResVariable" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Set res variable"
+
+[node name="SettingsManager" type="VBoxContainer" parent="listContainer/testlists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="listContainer/testlists/SettingsManager/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "SettingsManager"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="saveSettings" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Save settings
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="loadSettings" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Load settings"
+
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="resetToDefaults" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Reset to defaults"
+
+[node name="DialogueManager" type="VBoxContainer" parent="listContainer/testlists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="listContainer/testlists/DialogueManager/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "DialogueManager"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="playDialogue" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play dialogue"
+
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="autoSave" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Create autosave"
+
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="loadSave" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Load save"
+
+[node name="MenuManager" type="VBoxContainer" parent="listContainer/testlists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="listContainer/testlists/MenuManager/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "MenuManager
+"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="openMainMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Open main menu"
+
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="openSettingsMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Open settings menu"
+
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="openPauseMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Open pause menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+offset_left = 192.0
+offset_top = 108.0
+offset_right = 1768.0
+offset_bottom = 1012.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="New Game" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "New Game"
+
+[node name="Load Game" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Load Game"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Load Game" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

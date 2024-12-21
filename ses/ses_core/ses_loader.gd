@@ -1,3 +1,5 @@
+extends Node
+
 var load_game_settings : bool = true
 
 
