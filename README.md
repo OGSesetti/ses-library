@@ -1,4 +1,4 @@
-# ses-library
+# SES-library
  
 A multipurpose game-managing sestem for Godot 4.3, which is planned to include:
 
