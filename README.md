@@ -4,7 +4,7 @@ A multipurpose game-managing sestem for Godot 4.3, which is planned to include:
 
 -Save-manager that supports autosave and unlimited amount of manual save files</br>
 -Settings-manager that at least supports gameplay- and audio-related settings. Possibly even key bindings and video settings</br>
--2D style dialogue system that supports multiple branches</br>
+-2D style dialogue system that supports branching dialogue</br>
 -Menu-manager that makes the implementation of these systems quick and easy</br>
 
 
