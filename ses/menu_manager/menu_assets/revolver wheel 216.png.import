@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1w0ig01ph1xx"
-path="res://.godot/imported/revolver wheel 2048.png-b90711e7da993baab11d80284c97003c.ctex"
+uid="uid://hxruo5cxacgr"
+path="res://.godot/imported/revolver wheel 216.png-410a37c0d41977a0a5771523d11422dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu_manager/menu_assets/revolver wheel 2048.png"
-dest_files=["res://.godot/imported/revolver wheel 2048.png-b90711e7da993baab11d80284c97003c.ctex"]
+source_file="res://ses/menu_manager/menu_assets/revolver wheel 216.png"
+dest_files=["res://.godot/imported/revolver wheel 216.png-410a37c0d41977a0a5771523d11422dd.ctex"]
 
 [params]
 

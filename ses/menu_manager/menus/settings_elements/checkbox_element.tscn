@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://cclkxxr6guyfw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyno5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qei0h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwk5g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqwtr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2p7m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qa1fl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ael2q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7p5hk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qvxa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bymib"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ec1nu"]
+
+[node name="CheckBoxNode" type="Control"]
+layout_mode = 3
+anchor_right = 0.6
+anchor_bottom = 0.1
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 2
+offset_top = 62.0
+offset_right = 75.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Checkbox"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.241156, 0.241156, 0.241156, 1)
+
+[node name="Container" type="HBoxContainer" parent="."]
+modulate = Color(0.662745, 1, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckBox" type="CheckBox" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yyno5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qei0h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vwk5g")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_eqwtr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_r2p7m")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_qa1fl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ael2q")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_7p5hk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4qvxa")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_bymib")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ec1nu")
+text = "Checkbox"
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

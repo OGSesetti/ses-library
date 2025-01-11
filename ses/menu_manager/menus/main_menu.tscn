@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgecpm37206t5"]
 
 [ext_resource type="FontFile" uid="uid://du0pk1ieguc0h" path="res://ses/fonts/AlfaSlabOne-Regular.ttf" id="1_talgk"]
-[ext_resource type="Script" path="res://ses/menus/main_menu.gd" id="1_x7bj4"]
+[ext_resource type="Script" path="res://ses/menu_manager/menu_scripts/main_menu.gd" id="1_x7bj4"]
 
 [node name="Main menu" type="Control"]
 layout_mode = 3

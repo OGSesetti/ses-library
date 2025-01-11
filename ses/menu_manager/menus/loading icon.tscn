@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkn308j1srlse"]
 
-[ext_resource type="Texture2D" uid="uid://hxruo5cxacgr" path="res://menu_manager/menu_assets/revolver wheel 216.png" id="1_kolp2"]
-[ext_resource type="Script" path="res://menu_manager/loading_icon.gd" id="2_2ic5u"]
+[ext_resource type="Texture2D" uid="uid://hxruo5cxacgr" path="res://ses/menu_manager/menu_assets/revolver wheel 216.png" id="1_kolp2"]
+[ext_resource type="Script" path="res://ses/menu_manager/menu_scripts/loading_icon.gd" id="2_2ic5u"]
 
 [node name="loadingIcon" type="Control"]
 layout_mode = 3

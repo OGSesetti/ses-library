@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbtlb8bjb5k1r"
-path="res://.godot/imported/revolver wheel 1080.png-92abebec83371615a99a99b7922b4100.ctex"
+path="res://.godot/imported/revolver wheel 1080.png-248d3cb5c7711e5e28566291030b6088.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu_manager/menu_assets/revolver wheel 1080.png"
-dest_files=["res://.godot/imported/revolver wheel 1080.png-92abebec83371615a99a99b7922b4100.ctex"]
+source_file="res://ses/menu_manager/menu_assets/revolver wheel 1080.png"
+dest_files=["res://.godot/imported/revolver wheel 1080.png-248d3cb5c7711e5e28566291030b6088.ctex"]
 
 [params]
 

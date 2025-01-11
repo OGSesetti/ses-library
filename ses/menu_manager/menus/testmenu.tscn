@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5q1i8hlwpk3e"]
 
-[ext_resource type="Script" path="res://ses/menus/testmenu.gd" id="1_g0s1k"]
+[ext_resource type="Script" path="res://ses/menu_manager/menu_scripts/testmenu.gd" id="1_g0s1k"]
 [ext_resource type="FontFile" uid="uid://du0pk1ieguc0h" path="res://ses/fonts/AlfaSlabOne-Regular.ttf" id="2_662sr"]
-[ext_resource type="PackedScene" uid="uid://dkn308j1srlse" path="res://menu_manager/loading icon.tscn" id="3_5ch0j"]
-[ext_resource type="PackedScene" uid="uid://i4oc717slgog" path="res://menu_manager/pause_menu.tscn" id="4_g5mrf"]
+[ext_resource type="PackedScene" uid="uid://dkn308j1srlse" path="res://ses/menu_manager/menus/loading icon.tscn" id="3_5ch0j"]
+[ext_resource type="PackedScene" uid="uid://i4oc717slgog" path="res://ses/menu_manager/menus/pause_menu.tscn" id="4_g5mrf"]
 
 [node name="Testmenu" type="Control"]
 layout_mode = 3
@@ -13,6 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g0s1k")
+
+[node name="loadingIcon" parent="." instance=ExtResource("3_5ch0j")]
+layout_mode = 1
 
 [node name="titlecontainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -306,9 +309,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 text = "Quit"
-
-[node name="loadingIcon" parent="." instance=ExtResource("3_5ch0j")]
-layout_mode = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_g5mrf")]
 visible = false
