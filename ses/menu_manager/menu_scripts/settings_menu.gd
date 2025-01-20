@@ -4,6 +4,7 @@ var settings = SettingsManager.SettingsData.adjustable_settings
 
 var settings_checkbox = preload("res://ses/menu_manager/menus/settings_elements/checkbox_element.tscn")
 var settings_slider = preload("res://ses/menu_manager/menus/settings_elements/slider_element.tscn")
+var settings_dropdown = preload("res://ses/menu_manager/menus/settings_elements/dropdown_element.tscn")
 
 #@export var settings_slider: PackedScene
 #@export var settings_dropdown: PackedScene
@@ -25,7 +26,7 @@ func _ready() -> void:
 
 			"dropdown":
 				pass
-
+				#create_dropdown(setting)
 
 func create_checkbox(setting):
 	var checkbox_scene = settings_checkbox.instantiate()
@@ -57,7 +58,6 @@ func create_slider(setting):
 
 	label.text = setting["name"]
 
-
 	print(slider)
 	slider.set_value(setting["current"])
 
@@ -65,7 +65,23 @@ func create_slider(setting):
 	var address = define_address(setting)
 	address.add_child(slider_scene)
 
+func create_dropdown(setting):
+	var dropdown_scene = settings_dropdown.instantiate()
 
+
+	var label = dropdown_scene.get_node("Label")
+	var dropdown = dropdown_scene.get_node("OptionButton")
+
+	label.text = setting["name"]
+
+	for option in setting["options"]:
+		dropdown.add_item(option)
+		
+	
+
+
+
+	pass
 
 
 
