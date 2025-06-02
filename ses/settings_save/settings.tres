@@ -11,119 +11,25 @@ adjustable_settings = [{
 "name": "Camera adjusted by cursor",
 "type": "checkbox"
 }, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
-"category": "game",
-"current": true,
-"default": "true",
-"name": "Camera adjusted by cursor",
-"type": "checkbox"
-}, {
 "category": "video",
 "current": true,
 "default": true,
 "name": "Fullscreen",
 "type": "checkbox"
+}, {
+"category": "video",
+"current": "1920x1080",
+"default": "1920x1080",
+"name": "Resolution",
+"options": ["1920x1080", "2560x1440"],
+"type": "dropdown"
+}, {
+"category": "video",
+"current": "1920x1080",
+"default": "1920x1080",
+"name": "Resolution",
+"options": ["1920x1080", "2560x1440"],
+"type": "dropdown"
 }, {
 "category": "video",
 "current": "1920x1080",

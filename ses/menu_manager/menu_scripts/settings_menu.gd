@@ -15,6 +15,7 @@ var settings_dropdown = preload("res://ses/menu_manager/menus/settings_elements/
 @onready var controls_page = $%controls_list
 
 func _ready() -> void:
+
 	for setting in settings:
 		match setting["type"]:
 			"checkbox":
@@ -25,8 +26,10 @@ func _ready() -> void:
 				create_slider(setting)
 
 			"dropdown":
-				pass
-				#create_dropdown(setting)
+				create_dropdown(setting)
+
+
+
 
 func create_checkbox(setting):
 	var checkbox_scene = settings_checkbox.instantiate()
@@ -45,6 +48,11 @@ func create_checkbox(setting):
 	checkbox.toggled.connect(Callable(self, "_on_checkbox_toggled").bind(setting))
 	var address = define_address(setting)
 	address.add_child(checkbox_scene)
+
+
+
+
+
 
 func create_slider(setting):
 	var slider_scene = settings_slider.instantiate()
@@ -65,6 +73,11 @@ func create_slider(setting):
 	var address = define_address(setting)
 	address.add_child(slider_scene)
 
+
+
+
+
+
 func create_dropdown(setting):
 	var dropdown_scene = settings_dropdown.instantiate()
 
@@ -77,16 +90,9 @@ func create_dropdown(setting):
 	for option in setting["options"]:
 		dropdown.add_item(option)
 		
-	
-
-
-
-	pass
-
-
-
-
-
+	var address = define_address(setting)
+	print(dropdown)
+	address.add_child(dropdown_scene)
 
 
 func define_address(s):

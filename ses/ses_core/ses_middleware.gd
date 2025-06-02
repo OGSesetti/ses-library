@@ -1,5 +1,20 @@
 extends Node
 
+#SignalManager
+func signal_emit_custom():
+
+	pass
+
+
+
+
+
+#/SignalManager
+
+
+
+#SaveManager
+
 var res = SaveManager.res
 
 func save_manual(s = ""):
@@ -22,6 +37,8 @@ func res_read(k: String):
 
 func res_read_var(k):
 	return res.variables.get(k)
+
+#/SaveManager
 
 
 """

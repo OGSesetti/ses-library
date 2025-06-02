@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SES-library"
-run/main_scene="res://ses/menu_manager/menus/testmenu.tscn"
+run/main_scene="res://ses/menu_manager/menus/settings_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]

@@ -14,29 +14,14 @@ extends Resource
 #	Game
 
 {"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
-{"name": "Camera adjusted by cursor", "category": "game", "type": "checkbox", "default": "true", "current": true},
+
 
 #	Video
 
 {"name": "Fullscreen", "category": "video", "type": "checkbox", "default": true, "current": true},
 
+{"name": "Resolution", "category": "video", "type": "dropdown", "options": ["1920x1080", "2560x1440"], "default": "1920x1080", "current": "1920x1080"},
+{"name": "Resolution", "category": "video", "type": "dropdown", "options": ["1920x1080", "2560x1440"], "default": "1920x1080", "current": "1920x1080"},
 {"name": "Resolution", "category": "video", "type": "dropdown", "options": ["1920x1080", "2560x1440"], "default": "1920x1080", "current": "1920x1080"},
 
 

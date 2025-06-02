@@ -62,7 +62,7 @@ func save_game(n = manual_save_name, autosave : bool = false): #	I guess you can
 		if key not in exclude_keys:
 			data[key] = res.get(key)
 			print("SaveManager: ", key, " added to package")
-	var json_data = JSON.stringify(data, "\t")
+	var json_data = JSON.stringify(data, "\t") #	\t means pretty text
 
 	if autosave == false:	
 		timestamp = Time.get_datetime_string_from_system()
