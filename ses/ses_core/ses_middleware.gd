@@ -15,6 +15,7 @@ func signal_emit_custom():
 
 #SaveManager
 
+#	Muuta näitä nyt jumalauta
 var res = SaveManager.res
 
 func save_manual(s = ""):

@@ -1,0 +1,9 @@
+This is an address book for all the different ID and command variables.
+
+
+ID's:
+	"settings"
+
+
+Commands:
+	"update"

@@ -11,3 +11,12 @@ const check_overwrite : bool = true 		#	Does nothing right now
 #	SettingsManager
 const settings_path = "res://ses/settings_save/settings.tres"	#	Probably a good idea to not touch this
 #	/SettingsManager
+
+
+#	SignalManager
+const mute_standard_signals: bool = true
+const mute_command_signals: bool = true
+const mute_global_signals: bool = true
+const mute_ui_signals: bool = true
+
+#	/SignalManager
