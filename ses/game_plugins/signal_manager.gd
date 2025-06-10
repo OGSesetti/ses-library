@@ -33,7 +33,7 @@
 
 #	You can also create new signal types by declaring them, adding them to the "signal_names"-array and creating the functions for them.
 
-
+#	JOS SIGNAL MANAGER AIHEUTTAA KAATUILUA TAI MUITA ONGELMIA, OTA SELVÄÄ KUSEEKO AUTOMAATTISEN CONNECTAUKSEN AJOITUS SIGNAALIEN VASTAANOTON KANSSA
 
 extends Node
 
@@ -49,7 +49,6 @@ signal standard_signal
 signal command_signal
 signal global_signal
 signal ui_signal
-signal time_signal
 
 var signal_names =[
 "standard_signal",	#	id, data, mute
@@ -57,11 +56,6 @@ var signal_names =[
 "global_signal",	#	event, data (for more globally used signals)
 "ui_signal"	,		#	command but for UI
 
-
-
-
-"time_signal"		#	Constant global time signal in String form: "%s.%s.%s %s:%s:%s" % [year_string, month_string, day_string, hour_string, minute_string, second_string]
-					#	Not in use. Needs a function that actively broadcasts the time. Pretty useless in a video game probably.
 ]
 
 
@@ -128,10 +122,4 @@ func send_global(command, data = ""):
 	emit_signal("global_signal", command, data)
 	if mute_global == false:
 		report_sent_signal("Global", ", Command: ", command, "Data: " +  data)
-
-#	This will most likely be obsolete outside the calendar app
-func send_time(data, mute = mute_time):
-	emit_signal("time_signal", data)
-	if mute == false:
-		report_sent_signal("Time", ", Data: ", data)
 

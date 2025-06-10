@@ -19,7 +19,7 @@ func load_settings():
 
 
 func update_settings():
-	SignalManager.send_command("settings", update)
+	SignalManager.send_command("settings", "update")
 
 
 func init_file():

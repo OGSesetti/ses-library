@@ -21,8 +21,7 @@ extends Resource
 {"name": "Fullscreen", "category": "video", "type": "checkbox", "default": true, "current": true},
 
 {"name": "Resolution", "category": "video", "type": "dropdown", "options": ["1920x1080", "2560x1440"], "default": "1920x1080", "current": "1920x1080"},
-{"name": "Resolution", "category": "video", "type": "dropdown", "options": ["1920x1080", "2560x1440"], "default": "1920x1080", "current": "1920x1080"},
-{"name": "Resolution", "category": "video", "type": "dropdown", "options": ["1920x1080", "2560x1440"], "default": "1920x1080", "current": "1920x1080"},
+
 
 
 #	Sound
@@ -37,7 +36,10 @@ extends Resource
 
 #	Controls
 
+#	Invisible settings?
+
+
+
 
 ]
 
-#Invisible settings?

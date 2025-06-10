@@ -49,7 +49,7 @@ func init_folder():
 			print("Save folder not found. Creating one at: ", path)
 		else:
 			push_error("Failed to find or create save folder")
-			print("SaveManager: ERROR: could not find nor create save folder. Fuck.")
+			print("SaveManager: ERROR: could not find or create save folder. Fuck.")
 
 func save_game(n = manual_save_name, autosave : bool = false): #	I guess you can save without the timestamp with (name, true) 
 	if n.strip_edges() == "":
