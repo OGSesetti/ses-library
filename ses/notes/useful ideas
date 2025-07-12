@@ -1,0 +1,7 @@
+Repo that has a system for succesfully preventing audio spiking
+	https://github.com/Aarimous/AudioManager		MERKKAA LÄHTEISIIN!
+
+
+TODO:
+	ses_middleware:
+		Proprietary Ses.save_and_quit() -command to help with exit saves etc.

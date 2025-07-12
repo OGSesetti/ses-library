@@ -1,0 +1,23 @@
+Might want to change this in a way that leaves out the id
+
+Settings:
+
+	update:
+	Sends a signal that tells all nodes in the game to update their settings
+
+	set:
+	Changes the value of a setting.
+	Example: set vol 0.5
+
+	open:
+	Opens settings menu.
+
+	close:
+	Closes settings menu
+
+
+
+Other command ideas:
+
+vol (float)
+quit

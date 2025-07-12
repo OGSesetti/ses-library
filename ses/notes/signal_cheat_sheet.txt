@@ -1,9 +1,8 @@
 This is an address book for all the different ID and command variables.
+var uses_signals = true
 
-
-ID's:
-	"settings"
-
-
-Commands:
-	"update"
+ID's and commands:
+	settings
+		update
+		update_nodes
+		set

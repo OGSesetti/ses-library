@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cms61jobvw6xm"]
+
+[ext_resource type="FontFile" uid="uid://du0pk1ieguc0h" path="res://game assets/fonts/AlfaSlabOne-Regular.ttf" id="1_t603v"]
+
+[resource]
+base_font = ExtResource("1_t603v")

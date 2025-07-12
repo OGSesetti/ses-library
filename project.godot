@@ -11,16 +11,18 @@ config_version=5
 [application]
 
 config/name="SES-library"
-run/main_scene="res://ses/menu_manager/menus/settings_menu.tscn"
+run/main_scene="res://ses/menu manager/scenes/independent menus/testmenu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]
 
-SesConfig="*res://ses/ses_core/ses_config.gd"
-SaveManager="*res://ses/game_plugins/save_manager.gd"
-Ses="*res://ses/ses_core/ses_middleware.gd"
-SettingsManager="*res://ses/game_plugins/settings_manager.gd"
+SesConfig="*res://ses/core components/ses_config/ses_config.tscn"
+SesAdmin="*res://ses/core components/ses_admin.gd"
+SaveManager="*res://ses/save manager/save_manager.gd"
+Ses="*res://ses/core components/ses_middleware.gd"
+SettingsManager="*res://ses/settings manager/settings_manager.gd"
 SignalManager="*res://ses/game_plugins/signal_manager.gd"
+MenuManager="*res://ses/menu manager/scenes/menu_manager.tscn"
 
 [display]
 

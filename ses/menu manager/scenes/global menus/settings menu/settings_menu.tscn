@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=3 uid="uid://dy774gucb4825"]
+
+[ext_resource type="Script" path="res://ses/menu manager/scripts/settings_menu.gd" id="1_7wiv5"]
+
+[sub_resource type="Theme" id="Theme_8ydtr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah08p"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_ofp2m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fba6x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mhu5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4bsb"]
+bg_color = Color(0.741176, 0.741176, 0.741176, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmhha"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b5vs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="settings_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.01101, 1)
+script = ExtResource("1_7wiv5")
+active = null
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.02
+anchor_right = 0.109
+anchor_bottom = 0.2
+offset_left = -0.199999
+offset_top = 0.2
+offset_bottom = -106.0
+
+[node name="ReturnButton" type="Button" parent="MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return"
+
+[node name="SettingsList" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.15
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.002
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8ydtr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ah08p")
+tab_alignment = 1
+current_tab = 2
+clip_tabs = false
+
+[node name="Game" type="MarginContainer" parent="TabContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_top = 50
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Game"]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="game_list" type="VBoxContainer" parent="TabContainer/Game/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="Video" type="MarginContainer" parent="TabContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_top = 50
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Video"]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="video_list" type="VBoxContainer" parent="TabContainer/Video/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="Sound" type="MarginContainer" parent="TabContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_top = 50
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound"]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="sound_list" type="VBoxContainer" parent="TabContainer/Sound/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="Controls" type="MarginContainer" parent="TabContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_top = 50
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controls"]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="controls_list" type="VBoxContainer" parent="TabContainer/Controls/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="TabBar" type="TabBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="TabBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ofp2m")
+theme_override_styles/scroll = SubResource("StyleBoxFlat_fba6x")
+theme_override_styles/scroll_focus = SubResource("StyleBoxFlat_7mhu5")
+theme_override_styles/grabber = SubResource("StyleBoxFlat_t4bsb")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxFlat_dmhha")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxFlat_5b5vs")
+allow_greater = true
+allow_lesser = true
+
+[connection signal="pressed" from="MarginContainer2/ReturnButton" to="." method="_on_return_button_pressed"]

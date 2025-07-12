@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr7shi6ih6k1y"]
+
+[ext_resource type="Script" path="res://ses/core components/ses_config/ses_config.gd" id="1_dx6ho"]
+
+[node name="Ses_config" type="Node"]
+script = ExtResource("1_dx6ho")

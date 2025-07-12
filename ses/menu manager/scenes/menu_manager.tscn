@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfe30o6ftlib"]
+
+[ext_resource type="Script" path="res://ses/menu manager/scripts/menu_manager.gd" id="1_5xipw"]
+[ext_resource type="PackedScene" uid="uid://i4oc717slgog" path="res://ses/menu manager/scenes/global menus/pause menu/pause_menu.tscn" id="2_38n8y"]
+[ext_resource type="PackedScene" uid="uid://dy774gucb4825" path="res://ses/menu manager/scenes/global menus/settings menu/settings_menu.tscn" id="3_eu652"]
+
+[node name="MenuManager" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5xipw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_38n8y")]
+visible = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 12
+
+[node name="settings_menu" parent="CanvasLayer2" instance=ExtResource("3_eu652")]
+visible = false

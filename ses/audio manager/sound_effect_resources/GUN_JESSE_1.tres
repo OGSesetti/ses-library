@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=2 format=3 uid="uid://bjf3y63wlyiam"]
+
+[ext_resource type="Script" path="res://ses/audio manager/scripts/sound_effect_settings.gd" id="1_rr1eg"]
+
+[resource]
+script = ExtResource("1_rr1eg")
+limit = 5
+type = 0
+volume = 0.0
+pitch_scale = 1.0
+pitch_variance = 0.0

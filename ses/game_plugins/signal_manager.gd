@@ -44,6 +44,7 @@ var mute_command: bool = SesConfig.mute_command_signals
 var mute_global: bool = SesConfig.mute_global_signals
 var mute_ui: bool = SesConfig.mute_ui_signals
 
+var print_node_added = true
 
 signal standard_signal
 signal command_signal
@@ -73,7 +74,8 @@ func scan_existing_nodes(root: Node):
 
 func _on_node_added(node: Node):
 	var uses_signals = false
-	print("SignalManager: New node found")
+	if print_node_added == true:
+		print("SignalManager: Node found: ", node)
 	if "uses_signals" in node:
 		uses_signals = node.get("uses_signals")
 	if uses_signals == true:
@@ -122,4 +124,3 @@ func send_global(command, data = ""):
 	emit_signal("global_signal", command, data)
 	if mute_global == false:
 		report_sent_signal("Global", ", Command: ", command, "Data: " +  data)
-
