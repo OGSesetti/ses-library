@@ -1,21 +1,12 @@
-SaveManager:
-	Luo lukemismetodit variableille (ehkä res.juttu riittää, ehkä ei)
-	
 SettingsManager:
-	Luo resurssi ja tallennusjärjestelmä
-	Sama kuin SaveManagerissa: luo tapa lukea tietoja
-	Luo valikko, josta kaikkea voi säätää
-	settings-objectit (slider, checkbox, dropdown)(ehkä vasta menun puolella)
-	
 	Ääniasetukset, keybindingit, kamera-asetukset(ehkä vasta pelin puolella)
 	
 MenuManager:
-	SettingsMenu
-	Ota selvää onko tarvetta signaaleille. Tuleeko se tänne vai peliin?
+	SettingsMenu (keybindit jäljellä)
 
 DialogueManager:
 	Boxi, johon tulee kuva (tarvittaessa), puhuvan hahmon nimi (tarvittaessa) ja itse dialogi. Tämä kaikki ehkä menumanageriin
 	Dialogueskripti, joka ottaa koko keskustelun listana ja toistaa sen looppina. Ota selvää, onko soft pause mahdollista, vai olisiko pauseemisen ympärityöskentely esim signaaleilla fiksumpaa
 
 Muuta:
-	Siirrä pelin audioPlayer audio_manageriin, jotta asetusten integrointi pysyy yksinkertaisena
+	Siivoa kansioiden nimet (Kaikkiin joko alaviivat tai välilyönnit. Ei molempia.)
