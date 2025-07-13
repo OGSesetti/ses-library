@@ -54,7 +54,7 @@ func create_checkbox(setting):
 
 	#label.text = setting["display_name"]
 	checkbox.text = setting["display_name"]
-	print(checkbox)
+	#print(checkbox)
 	checkbox.set_pressed(setting["current"])
 
 	checkbox.toggled.connect(Callable(self, "_on_checkbox_toggled").bind(setting))
@@ -72,7 +72,7 @@ func create_slider(setting):
 
 	label.text = setting["display_name"]
 
-	print(slider)
+	#print(slider)
 	slider.set_value(setting["current"])
 
 	var address = define_address(setting)
@@ -92,7 +92,7 @@ func create_dropdown(setting):
 		dropdown.add_item(option)
 		
 	var address = define_address(setting)
-	print(dropdown)
+	#print(dropdown)
 	address.add_child(dropdown_scene)
 
 

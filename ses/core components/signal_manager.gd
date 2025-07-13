@@ -44,19 +44,25 @@ var mute_command: bool = SesConfig.mute_command_signals
 var mute_global: bool = SesConfig.mute_global_signals
 var mute_ui: bool = SesConfig.mute_ui_signals
 
-var print_node_added = true
+var print_node_added = false
 
+#	Don't be fooled! These need to be here!
 signal standard_signal
 signal command_signal
 signal global_signal
 signal ui_signal
+
+signal stop_bgm
+
+
+
 
 var signal_names =[
 "standard_signal",	#	id, data, mute
 "command_signal",	#	id, command, data
 "global_signal",	#	event, data (for more globally used signals)
 "ui_signal"	,		#	command but for UI
-
+"kill_bgm",			#	kills background music
 ]
 
 
@@ -72,7 +78,7 @@ func scan_existing_nodes(root: Node):
 		_on_node_added(child)
 		scan_existing_nodes(child)
 
-func _on_node_added(node: Node):
+func _on_node_added(node: Node):	#	tätä voisi siivota
 	var uses_signals = false
 	if print_node_added == true:
 		print("SignalManager: Node found: ", node)
@@ -115,7 +121,7 @@ func send_command(id, command, data = ""):
 func send_ui(id, command, data = ""):
 	if id == null:
 		push_warning("Signal manager: Received instructions with no ID. Delivery can be expected to have failed.")
-	emit_signal("ui_signal", id, command, data)
+	emit_signal("ui_signal", id, command, data)	######################################################
 	if mute_command == false:
 		report_sent_signal("UI-Command", ", ID: ", id, ", Command: ", command, ", Data: ", data)
 
@@ -124,3 +130,7 @@ func send_global(command, data = ""):
 	emit_signal("global_signal", command, data)
 	if mute_global == false:
 		report_sent_signal("Global", ", Command: ", command, "Data: " +  data)
+
+func kill_bgm(fade_time: float):
+	emit_signal("stop_bgm", fade_time)
+	print("SignalManager: stopping bgm")

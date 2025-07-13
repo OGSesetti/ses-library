@@ -1,32 +1,23 @@
-class_name SoundEffect
+class_name SoundTrack
 extends Resource
 
-enum sound_effect_type {	#	ÄÄNET TÄNNE
-GUN_JESSE_1,
-GUN_JESSE_2,
-FOOTSTEPS
+var uses_signals = true
+
+enum sound_track_type {	#	ÄÄNET TÄNNE
+MAIN_MENU_THEME,
+TEXAS_THEME,
+BATTLE_THEME
 
 }
 
 
 
-@export_range (0, 10) var limit: int = 5
-@export var type: sound_effect_type
-@export var sound_effect: AudioStream	#	saattaa paskoa housuun
+@export var type: sound_track_type
+@export var sound_track: AudioStream	#	Tää type saattaa paskoa housuun. Originalissa on AudioStreamMP3 tai jtn
 @export_range(0.0, 2.0,.01) var volume: float = 1.0
 @export_range(0.0, 4.0,.01) var pitch_scale: float = 1.0
-@export_range(0.0, 1.0,.01) var pitch_variance: float = 0.0
+
 
 var audio_count: int = 0
 
 
-func change_audio_count(amount: int) -> void:
-	audio_count = max(0, audio_count + amount)
-
-
-func has_open_limit() -> bool:
-	return audio_count < limit
-
-
-func on_audio_finished() -> void:
-	change_audio_count(-1)

@@ -10,7 +10,7 @@ extends Node
 #	/SaveManager
 
 #	SettingsManager
-@export var settings_path: String = "res://ses/settings manager/settings_save_folder/settings.tres"	#	Probably a good idea to not touch this
+@export var settings_path: String = "res://ses/settings manager/settings_save_folder/resources/settings.tres"	#	Probably a good idea to not touch this
 #	/SettingsManager
 
 
@@ -23,8 +23,14 @@ extends Node
 #	/SignalManager
 
 #	AudioManager
-@export var audio_file_path: String = "res://game assets/audio/"
 @export var audio_manager_path: String = "res://ses/audio manager/scenes/audio_manager.tscn"
+@export var audio_file_path: String = "res://game assets/audio/"
 @export var audio_resource_path: String = "res://ses/audio manager/sound_effect_resources/"
 
 #	/AudioManager
+
+#	MusicManager
+@export var music_manager_path: String = "res://ses/music manager/scenes/music_manager.tscn"
+@export var music_file_path: String = "res://game assets/audio/music/"
+@export var music_resource_path: String = "res://ses/music manager/music_resources/"
+#	/MusicManager

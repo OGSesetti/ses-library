@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SettingsResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://ses/settings manager/settings_resource.gd" id="1_05tsu"]
+[ext_resource type="Script" path="res://ses/settings manager/resources/settings_resource.gd" id="1_05tsu"]
 
 [resource]
 script = ExtResource("1_05tsu")

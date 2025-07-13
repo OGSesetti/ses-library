@@ -4,3 +4,4 @@
 
 [node name="Ses_config" type="Node"]
 script = ExtResource("1_dx6ho")
+settings_path = "res://ses/settings manager/settings_save_folder/settings.tres"

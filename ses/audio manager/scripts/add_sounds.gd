@@ -21,7 +21,7 @@ func _run():
 		scene = PackedScene.new()
 		scene.pack(scene_instance)
 		ResourceSaver.save(scene, scene_path)
-		print("AudioManager update. Reload the editor.")
+		print("AudioManager updated. Reload the editor.")
 
 	else:
 		print("AudioManager was not updated. No new resources were found.")

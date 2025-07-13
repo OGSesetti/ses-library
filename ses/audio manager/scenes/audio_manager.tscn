@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://22nm7ay1m853"]
+[gd_scene load_steps=2 format=3 uid="uid://22nm7ay1m853"]
 
 [ext_resource type="Script" path="res://ses/audio manager/scripts/audio_manager.gd" id="1_w6lly"]
-[ext_resource type="Script" path="res://ses/audio manager/scripts/sound_effect_settings.gd" id="2_s57tt"]
-[ext_resource type="Resource" uid="uid://bjf3y63wlyiam" path="res://ses/audio manager/sound_effect_resources/GUN_JESSE_1.tres" id="3_0w5hp"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_w6lly")
-sound_effects = [ExtResource("2_s57tt"), ExtResource("3_0w5hp")]

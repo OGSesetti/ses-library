@@ -1,59 +1,44 @@
-####################	AUDIO MANAGER	####################
+####################	MUSIC MANAGER	####################
 
-#	Spike prevention and file managing method ideas have been nicked from the AudioManager system by Aarimous:
-#	https://github.com/Aarimous/AudioManager
-#	Modifications made by me include: More accurate volume scaling, adjustable volume from the function call, logarithmic pitch scaling that SHOULD work a bit better
+#	Literally the same shit as Audio Manager. Go look at that for more info.
 
 
-#	sound_effects = the resources that are used in playing sound effects
-#	sound_effect_files = the audio files
 @tool
 extends Node2D
 
-var sound_effect_dict: Dictionary = {}
+var sound_track_dict: Dictionary = {}
 
-@export var sound_effects: Array[SoundEffect]
+@export var sound_tracks: Array[SoundTrack]
 
 func _ready() -> void:
-	for sound_effect in sound_effects:
-		sound_effect_dict[sound_effect.type] = sound_effect
+	for sound_track in sound_tracks:
+		sound_track_dict[sound_track.type] = sound_track
 
 
 func calculate_volume(setting_vol: float, parameter_vol:) -> float:
 	var vol = setting_vol * parameter_vol
 	return vol
 
-func randomize_pitch(pitch_variance: float) -> float:
-	var pitch = randf_range(1.0 - pitch_variance, 1.0 + pitch_variance)
-	return pitch
-
-
-
 
 #	Audio playing shit:
 
-func play_global(type: SoundEffect.sound_effect_type, vol_modifier: float = 1.0, disable_random_pitch: bool = false):
-	if sound_effect_dict.has(type):
-		var sound_effect: SoundEffect = sound_effect_dict[type]
-		if sound_effect.has_open_limit():
-			sound_effect.change_audio_count(1)
+func play_song(type: SoundTrack.sound_track_type, vol_modifier: float = 1.0):
+	if sound_track_dict.has(type):
+		var sound_track: SoundTrack = sound_track_dict[type]
+		if sound_track.has_open_limit():
+			sound_track.change_audio_count(1)
 			var new_audio: AudioStreamPlayer = AudioStreamPlayer.new()
 			add_child(new_audio)
-			new_audio.stream = sound_effect.sound_effect
+			new_audio.stream = sound_track.sound_track
 
 
-			var volume = calculate_volume(sound_effect.volume, vol_modifier)
+			var volume = calculate_volume(sound_track.volume, vol_modifier)
 			new_audio.volume_db = linear_to_db(volume)
 
 
-			new_audio.pitch_scale = sound_effect.pitch_scale
+			new_audio.pitch_scale = sound_track.pitch_scale
 
-			if disable_random_pitch == false:
-				var pitch_variation = randomize_pitch(sound_effect.pitch_variance)
-				new_audio.pitch_scale = new_audio.pitch_scale * pitch_variation
-
-
-			new_audio.finished.connect(sound_effect.on_audio_finished)
+			new_audio.finished.connect(sound_track.on_audio_finished)
 			new_audio.finished.connect(new_audio.queue_free)
 			new_audio.play()
 	else:
@@ -62,37 +47,8 @@ func play_global(type: SoundEffect.sound_effect_type, vol_modifier: float = 1.0,
 
 
 
-func play_locational(location: Vector2, type: SoundEffect.sound_effect_type, vol_modifier: float = 1.0, disable_random_pitch: bool = false):
-	if sound_effect_dict.has(type):
-		var sound_effect: SoundEffect = sound_effect_dict[type]
-		if sound_effect.has_open_limit():
-			sound_effect.change_audio_count(1)
-			var new_audio_2d: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-			add_child(new_audio_2d)
-			new_audio_2d.position = location
-			new_audio_2d.stream = sound_effect.sound_effect
 
 
-			var volume = calculate_volume(sound_effect.volume, vol_modifier)
-			new_audio_2d.volume_db = linear_to_db(volume)
-
-
-			new_audio_2d.pitch_scale = sound_effect.pitch_scale
-
-			if disable_random_pitch == false:
-				var pitch_variation = randomize_pitch(sound_effect.pitch_variance)
-				new_audio_2d.pitch_scale = new_audio_2d.pitch_scale * pitch_variation
-
-
-			new_audio_2d.finished.connect(sound_effect.on_audio_finished)
-			new_audio_2d.finished.connect(new_audio_2d.queue_free)
-			new_audio_2d.play()
-	else:
-		push_error("AudioManager failed to find settings for type: ", type)
-
-
-func play_song():
-	pass
 
 func stop_song():
 	pass
