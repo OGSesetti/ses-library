@@ -52,7 +52,6 @@ func load_settings():
 
 
 func update_settings():
-
 	SignalManager.send_command("settings", "update_nodes")#	Tarkista
 
 
@@ -74,9 +73,9 @@ func set_setting(data):
 
 
 func change_volume():
-
 	pass
 	
+
 func on_command_signal(id, cmd, data = ""):
 	if id != signal_id:
 		return
@@ -98,11 +97,13 @@ func update_all():
 	for i in current_settings.size():
 		update_from_memory_by_address_int(i)
 
-func update_from_memory_by_address_int(i: int):
+
+func update_from_memory_by_address_int(i: int):	#mikä vittu tää on
 	var data = []
 	data[0] = current_settings[i]["id"]
 	data[1] = current_settings[i]["current"]
 	additional_functionality(data)
+
 
 func update_from_memory_by_id(id: String):#	Not in use right now
 	for i in current_settings.size():
@@ -110,15 +111,13 @@ func update_from_memory_by_id(id: String):#	Not in use right now
 			var data = [id, i["current"]]
 			additional_functionality(data)
 
+
 func additional_functionality(data):
 	match data[0]:
 		"vol", "sfx", "music":
 			update_audio(data)
 		_:
 			print("SettingsManager: Error at function: additional_functionality. setting_id: ", data[0], " was not recognized")
-
-
-
 
 
 func update_audio(data):
@@ -135,7 +134,6 @@ func update_audio(data):
 		"music":
 			var vol = float(data[1])
 			AudioServer.set_bus_volume_db(busi[2], linear_to_db(vol))
-
 
 		_:
 			pass

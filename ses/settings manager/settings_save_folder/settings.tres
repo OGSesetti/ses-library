@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SettingsResource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SettingsResource" load_steps=2 format=3 uid="uid://cex34lw3j24t2"]
 
 [ext_resource type="Script" path="res://ses/settings manager/resources/settings_resource.gd" id="1_05tsu"]
 
