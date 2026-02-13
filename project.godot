@@ -16,11 +16,12 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]
 
+FilePaths="*res://ses/core components/ses_config/file_paths.gd"
 SesConfig="*res://ses/core components/ses_config/ses_config.tscn"
-SesAdmin="*res://ses/core components/ses_admin.gd"
+sestem="*res://ses/core components/sestem.gd"
 SaveManager="*res://ses/save manager/save_manager.gd"
 Ses="*res://ses/core components/ses_middleware.gd"
-SettingsManager="*res://ses/settings manager/scripts/settings_manager.gd"
+SettingsManager="*res://ses/settings manager/scripts/settings_manager_old.gd"
 SignalManager="*res://ses/core components/signal_manager.gd"
 MenuManager="*res://ses/menu manager/scenes/menu_manager.tscn"
 

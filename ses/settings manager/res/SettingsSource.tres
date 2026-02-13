@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="SettingsList" load_steps=12 format=3 uid="uid://c3602do83puny"]
+
+[ext_resource type="Script" path="res://ses/settings manager/res/setting_res.gd" id="1_4n1b0"]
+[ext_resource type="Script" path="res://ses/settings manager/res/checkbox_setting_res.gd" id="2_mfq21"]
+[ext_resource type="Script" path="res://ses/settings manager/res/dropdown_setting_res.gd" id="3_n6irq"]
+[ext_resource type="Script" path="res://ses/settings manager/res/slider_setting_res.gd" id="4_plcmk"]
+[ext_resource type="Script" path="res://ses/settings manager/res/settings_list_res.gd" id="5_n4cp8"]
+
+[sub_resource type="Resource" id="Resource_m0wgg"]
+script = ExtResource("2_mfq21")
+default_value = true
+current_value = true
+id = "cfc"
+display_name = "Camera follows cursor"
+category = 0
+
+[sub_resource type="Resource" id="Resource_rwp1r"]
+script = ExtResource("2_mfq21")
+default_value = false
+current_value = false
+id = "fullscreen"
+display_name = "Fullscreen"
+category = 1
+
+[sub_resource type="Resource" id="Resource_jtlwx"]
+script = ExtResource("3_n6irq")
+options = Array[String](["1920x1080", "2560x1440"])
+id = "resolution"
+display_name = "Resolution"
+category = 1
+
+[sub_resource type="Resource" id="Resource_5j0mr"]
+script = ExtResource("4_plcmk")
+min_value = 0.0
+max_value = 1.0
+default_value = 0.5
+current_value = 0.5
+id = "master_vol"
+display_name = "Master volume"
+category = 2
+
+[sub_resource type="Resource" id="Resource_1a3m6"]
+script = ExtResource("4_plcmk")
+min_value = 0.0
+max_value = 1.0
+default_value = 0.5
+current_value = 0.5
+id = "sfx_vol"
+display_name = "Sound effects volume"
+category = 2
+
+[sub_resource type="Resource" id="Resource_b2mdf"]
+script = ExtResource("4_plcmk")
+min_value = 0.0
+max_value = 1.0
+default_value = 0.5
+current_value = 0.5
+id = "music_vol"
+display_name = "Music volume"
+category = 2
+
+[resource]
+script = ExtResource("5_n4cp8")
+list = Array[ExtResource("1_4n1b0")]([SubResource("Resource_m0wgg"), SubResource("Resource_rwp1r"), SubResource("Resource_jtlwx"), SubResource("Resource_5j0mr"), SubResource("Resource_1a3m6"), SubResource("Resource_b2mdf")])

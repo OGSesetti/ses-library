@@ -34,19 +34,15 @@ func _ready() -> void:
 			"dropdown":
 				create_dropdown(setting)
 
+
 func _process(_delta: float) -> void:	#delta turha?
 	if Input.is_action_just_pressed("ui_cancel"):
 		if active == true:
 			close_menu()
 
 
-
-
-
 func create_checkbox(setting):
 	var checkbox_scene = settings_checkbox.instantiate()
-
-
 	#var main = checkbox_instance.get_node("CheckBoxNode")
 	#var label = checkbox_instance.get_node("%Label") #ei toimi
 
@@ -107,6 +103,7 @@ func define_address(s):
 		"controls":
 			return controls_page
 
+
 func _on_checkbox_toggled(pressed, setting):
 	setting["current"] = pressed
 	print("Checkbox toggled: ", setting["display_name"], " to ", pressed)
@@ -122,6 +119,7 @@ func on_ui_signal(id, cmd, data):
 			"close":
 			############################################
 				close_menu()
+
 
 func toggle_menu():
 	if active == false:
@@ -141,6 +139,10 @@ func close_menu():
 	self.hide()
 	active = false
 
+
 func _on_return_button_pressed() -> void:
-	print("returnbutton signal recieved")
 	SignalManager.send_ui("menu_manager", "toggle", "pause")
+
+
+func _on_save_button_pressed() -> void:
+	SignalManager.send_command("settings", "save")

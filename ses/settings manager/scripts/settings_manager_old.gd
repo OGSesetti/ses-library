@@ -8,10 +8,9 @@ var res_path = FilePaths.settings_res_path
 var save_path = FilePaths.settings_save_path
 
 
-@export var default_settings: SettingsList
-var runtime_settings: SettingsList
-var SettingsData: Array
-
+@export var default_settings: SettingsResource
+var runtime_settings: SettingsResource
+var current_settings = runtime_settings.adjustable_settings
 
 var last_edited: int = 0
 
@@ -29,10 +28,12 @@ func _ready() -> void:
 	_init()
 
 
+
+	pass
+
 func _init():
 	default_settings = ResourceLoader.load(res_path)
 	runtime_settings = default_settings.duplicate(true)
-	SettingsData = runtime_settings.list
 
 	"""
 	var loaded_res = ResourceLoader.load(save_path)
@@ -46,47 +47,28 @@ func _init():
 """
 
 
+func get_busi():
+	busi[0] = AudioServer.get_bus_index(vol_bus_name)
+	busi[1] = AudioServer.get_bus_index(sfx_bus_name)
+	busi[2] = AudioServer.get_bus_index(music_bus_name)
+
 
 
 func load_settings():
-	Ses.log(0, "SettingsManager", "Attempting to load settings...")
-	var loaded_res = ResourceLoader.load(save_path)
-
-	if not loaded_res: # TEST THIS SHIT
-		Ses.log(2, "SettingsManager", "Settings file not fount. Creating one...")
-		save_settings()
-		load_settings()
-
-	if loaded_res is not SettingsList:
-		Ses.log(2, "SettingsManager", "Settings file was found but is either corrupt or not in the expected format. Rewriting...")
-		save_settings()
-		load_settings()
-
-	Ses.log(3, "SettingsManager", "Settings file found. Loading...")
-
-	var default_setting_counter: int = 0
-	var saved_setting_counter: int = 0
-	
-	for i in SettingsData:
-		default_setting_counter = default_setting_counter + 1
-		for n in loaded_res.list:
-			if i.id == n.id:
-				i = n
-				saved_setting_counter = saved_setting_counter + 1
-	Ses.log(3, "SettingsManager", "Successfully loaded", saved_setting_counter, "out of", default_setting_counter, "settings")
+	ResourceLoader.load(save_path)
 
 
 func save_settings():
-	ResourceSaver.save(runtime_settings, save_path)
+	pass
 
 
 func update_settings():
 	SignalManager.send_command("settings", "update_nodes")#	Tarkista
 
 
-func get_setting(setting_id):
-	for i in SettingsData:
-		if i.id == setting_id:
+func get_setting(setting_name):
+	for i in current_settings:
+		if runtime_settings[i]["name"] == setting_name:
 			return runtime_settings[i]["current"]
 	return null
 
@@ -102,12 +84,6 @@ func set_setting(data):
 				last_edited = i
 				print(runtime_settings[i])
 				additional_functionality(data)
-
-
-func get_busi():
-	busi[0] = AudioServer.get_bus_index(vol_bus_name)
-	busi[1] = AudioServer.get_bus_index(sfx_bus_name)
-	busi[2] = AudioServer.get_bus_index(music_bus_name)
 
 
 func change_volume():

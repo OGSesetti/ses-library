@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SettingsList" load_steps=5 format=3 uid="uid://bu6hg3x5lbc0v"]
+
+[ext_resource type="Script" path="res://ses/settings manager/res/setting_res.gd" id="1_nu4hc"]
+[ext_resource type="Script" path="res://ses/settings manager/res/checkbox_setting_res.gd" id="2_turxw"]
+[ext_resource type="Script" path="res://ses/settings manager/res/settings_list_res.gd" id="2_yar8k"]
+
+[sub_resource type="Resource" id="Resource_huckk"]
+script = ExtResource("2_turxw")
+default_value = true
+current_value = true
+id = "cfc"
+category = 0
+display_name = "Camera follows cursor"
+
+[resource]
+script = ExtResource("2_yar8k")
+list = Array[ExtResource("1_nu4hc")]([SubResource("Resource_huckk")])

@@ -9,6 +9,10 @@ extends Resource
 #	Element determines what kind of menu element is used to adjust the setting
 #	Element "elements" consist of: checkbox, dropdown, slider
 
+@export var adjustable_settings: Dictionary
+
+"""
+Old version:
 @export var adjustable_settings = [
 
 #	Game
@@ -42,4 +46,6 @@ extends Resource
 
 
 ]
+
+"""
 
