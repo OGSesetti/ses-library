@@ -91,6 +91,12 @@ func get_setting(setting_id):
 	return null
 
 
+func edit_setting(setting_type, setting, new_value):
+	#match setting_type:
+
+	pass
+
+"""
 func set_setting(data):
 	if current_settings[last_edited]["id"] == data[0]:
 		current_settings[last_edited]["current"] = data[1]
@@ -102,7 +108,7 @@ func set_setting(data):
 				last_edited = i
 				print(runtime_settings[i])
 				additional_functionality(data)
-
+"""
 
 func get_busi():
 	busi[0] = AudioServer.get_bus_index(vol_bus_name)

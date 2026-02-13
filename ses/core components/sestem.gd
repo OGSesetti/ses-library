@@ -1,42 +1,44 @@
 extends Node
-"""
-func _log(type, message, data = null):
-	pass
-"""
-enum colorenum{
-	WHITE,
-	RED,		# Think of traffic lights!
-	YELLOW,
-	GREEN,		# And now forget it!
-	BLUE,
-	PINK,
-}
 
 
-
-
-
-
-func log(color:int, source_name, data_1 = "", data_2 = "", data_3 = "", data_4 = "", data_5 = ""):
+func _colorize_text(color:int, text:String):
 	var color_start := "[color=white]"
 	var color_end := "[/color]"
 	match color:
-		colorenum.WHITE:
+		Enums.TextColor.WHITE:
 			color_start = "[color=white]"
-		colorenum.RED:
+		Enums.TextColor.RED:
 			color_start = "[color=red]"
-		colorenum.YELLOW:
+		Enums.TextColor.YELLOW:
 			color_start = "[color=yellow]"
-		colorenum.GREEN:
+		Enums.TextColor.GREEN:
 			color_start = "[color=green]"
-		colorenum.BLUE:
+		Enums.TextColor.BLUE:
 			color_start = "[color=blue]"
-		colorenum.PINK:
+		Enums.TextColor.PINK:
 			color_start = "[color=pink]"
 		_:
 			color_start = "[color=white]"
 
-	print_rich(color_start, "{", source_name, "}", color_end, " ", data_1, " ", data_2, " ", data_3, " ", data_4, " ", data_5)
+	var colorized_text = color_start + text + color_end
+	return colorized_text
+
+func print_color(color:int, text: String):
+	var result = _colorize_text(color, text)
+	print(result)
+
+func log(color:int, source_name: String, data_1 = "", data_2 = "", data_3 = "", data_4 = "", data_5 = ""):
+	var bracketed_source
+	match SesConfig.log_brackets:
+		Enums.Brackets.ROUND:
+			bracketed_source = "(" + source_name + ")"
+		Enums.Brackets.SQUARE:
+			bracketed_source = "[" + source_name + "]"
+		Enums.Brackets.CURLY:
+			bracketed_source = "{" + source_name + "}"
+
+	var result = _colorize_text(color, bracketed_source)
+	print_rich(result, " ", data_1, " ", data_2, " ", data_3, " ", data_4, " ", data_5)
 
 
 func error():

@@ -1,6 +1,9 @@
 @tool
 extends Node
 
+#	Sestem
+
+@export var log_brackets: Enums.Brackets = Enums.Brackets.CURLY
 
 #	SaveManager
 @export var save_folder_name : String = "saves" 		#	Located in users://

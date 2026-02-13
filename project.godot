@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]
 
+Enums="*res://ses/core components/enums.gd"
 FilePaths="*res://ses/core components/ses_config/file_paths.gd"
 SesConfig="*res://ses/core components/ses_config/ses_config.tscn"
 sestem="*res://ses/core components/sestem.gd"
