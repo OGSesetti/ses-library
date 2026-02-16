@@ -13,7 +13,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_edd73")
 
-[node name="Label" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 offset_right = 40.0

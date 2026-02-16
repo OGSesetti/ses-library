@@ -23,9 +23,11 @@ func _colorize_text(color:int, text:String):
 	var colorized_text = color_start + text + color_end
 	return colorized_text
 
+
 func print_color(color:int, text: String):
 	var result = _colorize_text(color, text)
 	print(result)
+
 
 func log(color:int, source_name: String, data_1 = "", data_2 = "", data_3 = "", data_4 = "", data_5 = ""):
 	var bracketed_source
@@ -124,3 +126,48 @@ func get_datetime_string_formatted(utc: bool = false):
 		dt.year, dt.month, dt.day,	dt.hour, dt.minute, dt.second
 	]
 	return dt_str
+
+"""
+#SaveManager
+#	Muuta näitä nyt jumalauta
+var res = SaveManager.res
+
+func manual_save(s = ""):
+	SaveManager.save_game(s)
+
+func load_save(s = ""):
+	SaveManager.load_game(s)
+
+func auto_save():
+	SaveManager.auto_save()
+
+func save_res_set(k : String, v):
+	SaveManager.set_res_value(k, v)
+
+func save_res_set_var(k, v):
+	SaveManager.set_res_variable(k, v)
+
+func save_res_read(k: String):
+	return res.get(k)
+
+func save_res_read_var(k):
+	return res.variables.get(k)
+
+#/SaveManager
+
+
+#MenuManager
+
+func pause_game():
+	SignalManager.send_ui("menu_manager", "toggle", "pause")
+	print("Ses-library: Game paused")
+
+func resume_game():
+	SignalManager.send_ui("menu_manager", "toggle", "none")
+	print("Ses-library: Game resumed")
+
+func open_settings():
+	SignalManager.send_ui("menu_manager", "toggle", "settings")
+
+#/MenuManager
+"""

@@ -20,40 +20,29 @@ var vol_bus_name = "Volume"
 var sfx_bus_name = "SFX"
 var music_bus_name = "Music"
 
-var busi = [0, 0, 0]	# bus indexes
+var bus_index = [0, 0, 0]	# bus indexes
 
-var bus_index: int
+#var bus_index: int
 
 
 func _ready() -> void:
+	get_bus_index()
 	_init()
-
+	print_settings()
 
 func _init():
 	default_settings = ResourceLoader.load(res_path)
 	runtime_settings = default_settings.duplicate(true)
 	SettingsData = runtime_settings.list
-
-	"""
-	var loaded_res = ResourceLoader.load(save_path)
-	if loaded_res:
-		load_settings()
-		print("SettingsManager: Loaded settings")
-	else:
-		print("SettingsManager: Settings file not found. Creating one.")
-		save_settings()
-	pass
-"""
-
-
-
+	load_settings()
+	print(SettingsData)
 
 func load_settings():
 	Ses.log(0, "SettingsManager", "Attempting to load settings...")
 	var loaded_res = ResourceLoader.load(save_path)
 
 	if not loaded_res: # TEST THIS SHIT
-		Ses.log(2, "SettingsManager", "Settings file not fount. Creating one...")
+		Ses.log(2, "SettingsManager", "Settings file not found. Creating one...")
 		save_settings()
 		load_settings()
 
@@ -70,119 +59,68 @@ func load_settings():
 	for i in SettingsData:
 		default_setting_counter = default_setting_counter + 1
 		for n in loaded_res.list:
+			#print(i.id, " - ", n.id)
 			if i.id == n.id:
-				i = n
+				i.current_value = n.current_value
+				Ses.log(4, "SettingsManager", "Loaded: ", i.id, ": ", i.current_value)
 				saved_setting_counter = saved_setting_counter + 1
+				#break
 	Ses.log(3, "SettingsManager", "Successfully loaded", saved_setting_counter, "out of", default_setting_counter, "settings")
-
+	return
 
 func save_settings():
 	ResourceSaver.save(runtime_settings, save_path)
 
-
-func update_settings():
-	SignalManager.send_command("settings", "update_nodes")#	Tarkista
-
-
-func get_setting(setting_id):
-	for i in SettingsData:
-		if i.id == setting_id:
-			return runtime_settings[i]["current"]
-	return null
+func set_setting(s: Setting, value):
+	edit_setting_from_id(s.id, value)
 
 
-func edit_setting(setting_type, setting, new_value):
-	#match setting_type:
-
-	pass
-
-"""
-func set_setting(data):
-	if current_settings[last_edited]["id"] == data[0]:
-		current_settings[last_edited]["current"] = data[1]
-		additional_functionality(data)
-	else:
-		for i in runtime_settings.size():
-			if runtime_settings[i]["id"] == data[0]:
-				runtime_settings[i]["current"] = data[1]
-				last_edited = i
-				print(runtime_settings[i])
-				additional_functionality(data)
-"""
-
-func get_busi():
-	busi[0] = AudioServer.get_bus_index(vol_bus_name)
-	busi[1] = AudioServer.get_bus_index(sfx_bus_name)
-	busi[2] = AudioServer.get_bus_index(music_bus_name)
+func get_setting_from_id(setting_id: String):
+	for s in SettingsData:
+		if s.id == setting_id:
+			print("Get_setting: ", s)
+			return s
+		return null
 
 
-func change_volume():
-	pass
-	
+func edit_setting_from_id(setting_id, value):
+	var s = get_setting_from_id(setting_id)
+	s.current_value = value
 
-func on_command_signal(id, cmd, data = ""):
-	if id != signal_id:
-		return
-	else:
-		match cmd:
-			"set":
-				set_setting(data)
-				additional_functionality(data)
-				#update_settings()
 
-			"update":
-				update_settings()
-			
-			"save":
-				save_settings()
-				print("SettingsManager: Received command: Save")
-				
-			_:
-				pass
+func print_settings():
+	for s in SettingsData:
+		Ses.log(0, "SettingsData", s.id, "-", s.current_value)
 
 
 
-func update_all():
-	for i in current_settings.size():
-		update_from_memory_by_address_int(i)
 
 
-func update_from_memory_by_address_int(i: int):	#mikä vittu tää on
-	var data = []
-	data[0] = current_settings[i]["id"]
-	data[1] = current_settings[i]["current"]
-	additional_functionality(data)
+
+#	AUDIO
+func get_bus_index():
+	bus_index[0] = AudioServer.get_bus_index(vol_bus_name)
+	bus_index[1] = AudioServer.get_bus_index(sfx_bus_name)
+	bus_index[2] = AudioServer.get_bus_index(music_bus_name)
 
 
-func update_from_memory_by_id(id: String):#	Not in use right now
-	for i in runtime_settings.size():
-		if runtime_settings[i]["id"] == id:
-			var data = [id, i["current"]]
-			additional_functionality(data)
+func additional_functionality(setting:Setting):#	Toistaiseksi suht turha mutta tulee varmaan käyttöön kun rupeaa koodaamaan muita asetuksia esim. resoluutiota
+	match setting.id:
+		"master_vol":
+			var busi = 0
+			change_bus_volume(setting, busi)
 
+		"sfx_vol":
+			var busi = 1
+			change_bus_volume(setting, busi)			
 
-func additional_functionality(data):
-	match data[0]:
-		"vol", "sfx", "music":
-			update_audio(data)
-		_:
-			print("SettingsManager: Error at function: additional_functionality. setting_id: ", data[0], " was not recognized")
-
-
-func update_audio(data):
-	match data[0]:
-		"vol":
-			var vol = float(data[1])
-			AudioServer.set_bus_volume_db(busi[1], linear_to_db(vol))
-			print("Master volume changed to ", vol)
-
-		"sfx":
-			var vol = float(data[1])
-			AudioServer.set_bus_volume_db(busi[1], linear_to_db(vol))
-
-		"music":
-			var vol = float(data[1])
-			AudioServer.set_bus_volume_db(busi[2], linear_to_db(vol))
-
+		"music_vol":
+			var busi = 2
+			change_bus_volume(setting, busi)
 		_:
 			pass
+
+
+func change_bus_volume(setting: Setting, busi:int):
+	var volume: float = setting.current_value
+	AudioServer.set_bus_volume_db(bus_index[busi], linear_to_db(volume))

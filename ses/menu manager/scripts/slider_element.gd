@@ -1,24 +1,20 @@
 extends Control
 
-var setting_id
-var var_type	#prob not needed
-
-# Called when the node enters the scene tree for the first time.
+var assigned_setting: SliderSetting
+@onready var label = $%NameLabel
+@onready var slider = $%Slider
+"""
 func _ready() -> void:
-	#Slider.value = SettingsManager.get_setting(setting_id)
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	set_block_signals(true)
+	slider.set_value_no_signal(assigned_setting.current_value)
+	label.text = assigned_setting.display_name
+	set_block_signals(false)
+"""
+func _ready() -> void:
+	slider.value = assigned_setting.current_value
+	label.text = assigned_setting.display_name
 
 
 func _on_slider_value_changed(value:float) -> void:
-	var data = [setting_id, value]
-	SignalManager.send_command("settings", "set", data)
-
-"""
-func _on_slider_value_changed(value:float) -> void:
-	var data = [setting_id, var_type, value]
-	SignalManager.send_command("settings", "set", data)
-"""
+	assigned_setting.current_value = value
+	print("SliderElement: ",assigned_setting.id," set at: ",assigned_setting.current_value)

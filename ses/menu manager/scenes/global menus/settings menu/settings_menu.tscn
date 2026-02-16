@@ -97,11 +97,10 @@ grow_vertical = 2
 theme = SubResource("Theme_8ydtr")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ah08p")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 
 [node name="Game" type="MarginContainer" parent="TabContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_top = 50
@@ -137,6 +136,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="Sound" type="MarginContainer" parent="TabContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_top = 50

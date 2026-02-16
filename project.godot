@@ -19,10 +19,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 Enums="*res://ses/core components/enums.gd"
 FilePaths="*res://ses/core components/ses_config/file_paths.gd"
 SesConfig="*res://ses/core components/ses_config/ses_config.tscn"
-sestem="*res://ses/core components/sestem.gd"
+Ses="*res://ses/core components/sestem.gd"
 SaveManager="*res://ses/save manager/save_manager.gd"
-Ses="*res://ses/core components/ses_middleware.gd"
-SettingsManager="*res://ses/settings manager/scripts/settings_manager_old.gd"
+SesApi="res://ses/core components/ses_middleware.gd"
+SettingsManager="*res://ses/settings manager/scripts/settings_manager.gd"
 SignalManager="*res://ses/core components/signal_manager.gd"
 MenuManager="*res://ses/menu manager/scenes/menu_manager.tscn"
 

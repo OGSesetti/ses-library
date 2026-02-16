@@ -24,7 +24,9 @@ category = 1
 
 [sub_resource type="Resource" id="Resource_jtlwx"]
 script = ExtResource("3_n6irq")
-options = Array[String](["1920x1080", "2560x1440"])
+dropdown_options = Array[String](["1920x1080", "2560x1440"])
+default_value = 0
+current_value = 0
 id = "resolution"
 display_name = "Resolution"
 category = 1

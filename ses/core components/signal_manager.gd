@@ -54,7 +54,7 @@ signal ui_signal
 
 signal stop_bgm
 
-
+var print_new_connections: bool = false
 
 
 var signal_names =[
@@ -93,6 +93,7 @@ func _connect_signals(node: Node):
 		var function_name = "on_" + n	#
 		if node.has_method(function_name):
 			connect(n, Callable(node, function_name))
+		if print_new_connections == true:
 			print("Connected ", n," to ", node)
 
 

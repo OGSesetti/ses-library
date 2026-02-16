@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cclkxxr6guyfw"]
+[gd_scene load_steps=13 format=3 uid="uid://cclkxxr6guyfw"]
+
+[ext_resource type="Script" path="res://ses/menu manager/scripts/checkbox_element.gd" id="1_8gnt1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyno5"]
 
@@ -27,8 +29,9 @@ custom_minimum_size = Vector2(0, 20)
 layout_mode = 3
 anchor_right = 0.6
 anchor_bottom = 0.1
+script = ExtResource("1_8gnt1")
 
-[node name="Label" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -59,6 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CheckBox" type="CheckBox" parent="."]
+unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
@@ -80,3 +84,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ec1nu")
 text = "Checkbox"
 icon_alignment = 1
 expand_icon = true
+
+[connection signal="button_down" from="CheckBox" to="." method="_on_check_box_button_down"]
+[connection signal="pressed" from="CheckBox" to="." method="_on_check_box_pressed"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]

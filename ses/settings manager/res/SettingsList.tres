@@ -9,8 +9,8 @@ script = ExtResource("2_turxw")
 default_value = true
 current_value = true
 id = "cfc"
-category = 0
 display_name = "Camera follows cursor"
+category = 0
 
 [resource]
 script = ExtResource("2_yar8k")
