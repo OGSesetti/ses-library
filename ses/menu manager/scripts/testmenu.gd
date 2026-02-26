@@ -84,3 +84,11 @@ func _process(_delta: float) -> void:
 
 #func _on_open_pause_menu_pressed() -> void:
 #	pass # Replace with function body.
+
+
+func _on_load_level_pressed() -> void:
+	Main.load_level(LevelIndex.Level1)
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

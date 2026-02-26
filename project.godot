@@ -26,6 +26,7 @@ SettingsManager="*res://ses/settings manager/scripts/settings_manager.gd"
 SignalManager="*res://ses/core components/signal_manager.gd"
 MenuManager="*res://ses/menu manager/scenes/menu_manager.tscn"
 LevelIndex="*res://game/scripts/level_index.gd"
+Main="*res://game/scenes/main.tscn"
 
 [display]
 

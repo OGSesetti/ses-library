@@ -328,8 +328,26 @@ position = Vector2(1715.52, 975.63)
 scale = Vector2(0.101, 0.1)
 texture = ExtResource("4_0ivil")
 
+[node name="LoadLevel" type="Button" parent="."]
+offset_left = 779.0
+offset_top = 738.0
+offset_right = 1093.0
+offset_bottom = 791.0
+theme_override_font_sizes/font_size = 32
+text = "Load level 1"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 777.0
+offset_top = 811.0
+offset_right = 1091.0
+offset_bottom = 864.0
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
 [connection signal="pressed" from="listContainer/testlists/MenuManager/MarginContainer4/openPauseMenu" to="." method="_on_open_pause_menu_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Load Game" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="LoadLevel" to="." method="_on_load_level_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

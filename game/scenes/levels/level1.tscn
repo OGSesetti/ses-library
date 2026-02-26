@@ -1,3 +1,23 @@
 [gd_scene format=3 uid="uid://bxs0q4e37jr02"]
 
 [node name="Level1" type="Node2D"]
+position = Vector2(953, 519)
+scale = Vector2(17.78, 17.78)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Label" type="Label" parent="Area2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 28.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="Control" type="Control" parent="Area2D"]
+layout_mode = 3
+anchors_preset = 0
