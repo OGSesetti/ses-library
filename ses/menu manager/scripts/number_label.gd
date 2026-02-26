@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 
 func _on_slider_value_changed(value):
 	text = str(value)
+
