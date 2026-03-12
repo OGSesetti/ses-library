@@ -8,16 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="SES-library"
-run/main_scene="res://ses/menu manager/scenes/independent menus/testmenu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="uid://rxluyi28uxy6"
+config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [autoload]
 
 Enums="*res://ses/core components/enums.gd"
 GameEnums="*res://game/data/game_enums.gd"
+Game="*uid://cvfdqeepgapmd"
 FilePaths="*res://ses/core components/ses_config/file_paths.gd"
 SesConfig="*res://ses/core components/ses_config/ses_config.tscn"
 Ses="*res://ses/core components/sestem.gd"
@@ -27,7 +32,6 @@ SettingsManager="*res://ses/settings manager/scripts/settings_manager.gd"
 SignalManager="*res://ses/core components/signal_manager.gd"
 MenuManager="*res://ses/menu manager/scenes/menu_manager.tscn"
 LevelIndex="*res://game/scripts/level_index.gd"
-Main="*res://game/scenes/main.tscn"
 GameObject="*res://game/data/game_object_reference.gd"
 
 [display]

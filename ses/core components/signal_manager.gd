@@ -43,7 +43,7 @@ var signal_names =[
 "global_signal",	#	event, data (for more globally used signals)
 "ui_signal"	,		#	command but for UI
 "kill_bgm",			#	kills background music
-"hud_update"
+"hud_update",
 ]
 
 

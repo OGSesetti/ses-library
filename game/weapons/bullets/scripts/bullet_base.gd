@@ -79,4 +79,3 @@ func _bullet_process(delta):
 
 func _collision_event():
 	queue_free()
-	

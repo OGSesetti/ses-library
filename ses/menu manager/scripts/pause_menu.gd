@@ -36,7 +36,7 @@ func _on_settings_pressed() -> void:
 
 
 func _on_exit_to_main_menu_pressed() -> void:
-	Main.load_level(LevelIndex.TestMenu)
+	SignalManager.send_command("Main", "load_level", LevelIndex.TestMenu)
 	MenuManager.global_menu_toggle_input()
 
 

@@ -8,11 +8,3 @@ var levels: Dictionary = {
 	"level_2": "res://game/scenes/levels/level2.tscn"
 
 }
-
-
-
-var e_levels: Dictionary[String, String] = {
-	0: "res://game/scenes/levels/level1.tscn",
-	1: "res://game/scenes/levels/level2.tscn"
-
-}

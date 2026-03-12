@@ -1,87 +1,61 @@
 extends Node
 
-@onready var world2D = $World2D
-#@onready var gui = $Gui
+var LevelIndex = GameEnums.Level
+@onready var Main = $Main
+@onready var level_environment = $World2D
+@onready var ui_environment = $UiEnvironment
 
+var uses_signals = true
 var thread: Thread
 
 var loaded_resource: PackedScene = null
 #var loading_screen: PackedScene = null
 
 
+func _ready():
+	#print("Main: LevelIndex: ", LevelIndex)
+	#print("Main: LevelIndex.LEVEL_!:", LevelIndex.LEVEL_1)
+	load_level(LevelIndex.TEST_MENU)
+
+func change_level(level_enum: int):
+	var loaded_level = _load_level_scene(level_enum)
+	get_tree().change_scene_to_packed(loaded_level)
 
 #	ResourceLoader can be used asynchronously. Using load() stops the thread completely until the load is ready.
-func load_level(level_name):
-	var level_path = GameObject.level[level_name]
+#	Callaa:	Main._load_level_scene(Main.LevelIndex.LEVEL_1) tai (GameEnums.Level.LEVEL_1)
+
+
+func load_level(level_name: int):
+	clear_current_level()
+	var level_scene = _load_level_scene(level_name)
+	var level_instance = level_scene.instantiate()
+	level_environment.add_child(level_instance)
+
+
+func _load_level_scene(level_enum: int):
+	var level_path = Game.level[level_enum]
+	var level
 	if level_path != null:
-		load(GameObject.levels[level_name])
+		level = load(level_path)
 	else:
-		Ses.log(1,"Main","Error loading level:", level_name, "")
-
-
-
-
-"""
-
-
-func load_level_from_path(level_path: String):
-	var result = _load_level_not_in_thread(level_path)
-	if result != 0:
-		Ses.log(1, "Main", "ERROR Loading level at path:", level_path)
+		Ses.log(1,"Main","Error loading level: path for level enum", level_enum, "does not exist")
 		return
-	else:
-		get_tree().change_scene_to_packed(loaded_resource)
+	if level is PackedScene:
+		return level
 
 
-func load_level(level_name: String):
-	var level_path = get_level_path(level_name)
-	if level_path != null and level_path is String:
-		var	result = _load_level_not_in_thread(level_path)
-		if result != 0:
-			Ses.log(1, "Main", "ERROR Loading level at path:", level_path)
-			return
-		else:
-			get_tree().change_scene_to_packed(loaded_resource)
+func clear_current_level():
+	for child in level_environment.get_children():
+		child.queue_free()
+	for element in ui_environment.get_children():
+		element.queue_free()
 
 
-func _load_level_not_in_thread(level_path: String):#	ResourceLoader can be used asynchronously. load() stops the thread
-	print("Thread inactive")
-	var _loaded_resource = ResourceLoader.load(level_path)
-	if !_loaded_resource:
-		return Error.ERR_FILE_NOT_FOUND
-	if _loaded_resource is not PackedScene:
-		return Error.ERR_FILE_UNRECOGNIZED
-	else:
-		loaded_resource = _loaded_resource
-		return Error.OK
-"""
+func on_command_signal(id, command, data):
+	match id:
+		"Main":
+			match command:
+				"load_level":
+					load_level(data)
 
-
-
-
-
-"""
-func _ready():
-	thread = Thread.new()
-
-
-func load_level(level_path: String):
-	var result = thread.start(_load_level_in_thread.bind(level_path))
-	if result != 0:
-		Ses.log(1, "Main", "ERROR Loading level at path:", level_path)
-		return
-	else:
-		get_tree().change_scene_to_packed(loaded_resource)
-
-
-func _load_level_in_thread(level_path: String):
-	print("Thread active")
-	var _loaded_resource = ResourceLoader.load(level_path)
-	if !_loaded_resource:
-		return Error.ERR_FILE_NOT_FOUND
-	if _loaded_resource is not PackedScene:
-		return Error.ERR_FILE_UNRECOGNIZED
-	else:
-		loaded_resource = _loaded_resource
-		return Error.OK
-"""
+	
