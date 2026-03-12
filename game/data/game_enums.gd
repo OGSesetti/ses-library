@@ -1,0 +1,16 @@
+extends Node
+
+enum ActionInputs{
+	ATTACK,
+	RELOAD,
+	DODGE,
+
+}
+
+enum HUDElement{
+	NONE,
+	PLAYER_HEALTH_CURRENT,
+	PLAYER_HEALTH_MAX,
+	PLAYER_AMMO_CURRENT,
+	PLAYER_AMMO_MAX,
+}

@@ -1,35 +1,15 @@
 ############################################ Severi's Essential Systems: ############################################
 ##################################################	SIGNAL MANAGER	##################################################
 
-
 #	This signal manager connects automatically to all added nodes that have the variable "uses_signals" that is set to true.
 #	Individual signals are connected based on the listening functions a node has. (_on_standard_signal etc.)
 #	ID and Command parameters can be used in a match statement to determine the receivers and instructions.
-
 
 #	Signal parameters in depth:
 #		ID == Identifier for the signal. This is how different nodes recognize what signals are meant for them. 
 #		command == Similar to ID, but describes the action wanted from the node.
 #		data == Information sent along with the signal. There shouldn't be any limitations on the type of data.
 #		mute == Determines if the console message is muted or not. The default setting can be changed in the config file.
-
-
-#	The signals are divided into multiple types to reduce unnecessary checks in the listening nodes.
-#	The different signal types can be used pretty freely, but here is the way I intended for them to be used:
-
-#		standard_signal:
-#			Your basic one-off signal that can be used to trigger actions and move data around. Only real advantages this has
-#			compared to the command_signal is the simplicity and the ability to selectively decide which signals get printed to the console.
-
-#		command_signal:
-#			Basically standard_signal with an extra parameter. Useful when one node has to be able to do multiple different actions. 
-
-#		global_signal:
-#			Command_signal without the ID. With proper logic a node should be able to listen to both directed commands and global commands.
-#			I see little use for this outside of console commands and world event triggers, so it is probably wise to use this sparingly.
-
-#		ui_signal:
-#			Another command_signal, but directed towards UI-related nodes for the sake of performance.
 
 #	You can also create new signal types by declaring them, adding them to the "signal_names"-array and creating the functions for them.
 
@@ -46,13 +26,13 @@ var mute_ui: bool = SesConfig.mute_ui_signals
 
 var print_node_added = false
 
-#	Don't be fooled! These need to be here!
+#	Don't fucking remove these
 signal standard_signal
 signal command_signal
 signal global_signal
 signal ui_signal
-
 signal stop_bgm
+signal hud_update
 
 var print_new_connections: bool = false
 
@@ -63,6 +43,7 @@ var signal_names =[
 "global_signal",	#	event, data (for more globally used signals)
 "ui_signal"	,		#	command but for UI
 "kill_bgm",			#	kills background music
+"hud_update"
 ]
 
 
@@ -102,6 +83,7 @@ func _connect_signals(node: Node):
 func report_sent_signal(type, a = "", b = "", c = "", d = "", e = "", f = "",g = "", h = ""):
 	print_rich("[color=#00E8FC]{SIGNAL MANAGER}[/color] Signal was sent: Type: ", type, a,b,c,d,e,f,g,h)
 
+
 #	The default type of signal with a handy mute option
 func send_standard(id = null, data = "", mute: bool = mute_standard):
 	if id == null:
@@ -109,6 +91,7 @@ func send_standard(id = null, data = "", mute: bool = mute_standard):
 	emit_signal("standard_signal", id, data)
 	if mute == false:
 		report_sent_signal("Standard",  "ID:", id, " Data:", data)
+
 
 #	Basically one extra parameter slot
 func send_command(id, command, data = ""):
@@ -118,6 +101,7 @@ func send_command(id, command, data = ""):
 	if mute_command == false:
 		report_sent_signal("Command", ", ID: ", id, ", Command: ", command, ", Data: ", data)
 
+
 #	Pretty much the same as command. Splitted for better performance
 func send_ui(id, command, data = ""):
 	if id == null:
@@ -126,12 +110,27 @@ func send_ui(id, command, data = ""):
 	if mute_command == false:
 		report_sent_signal("UI-Command", ", ID: ", id, ", Command: ", command, ", Data: ", data)
 
+
 #	No ID. Works everywhere. Need to figure something for the listening though
 func send_global(command, data = ""):
 	emit_signal("global_signal", command, data)
 	if mute_global == false:
 		report_sent_signal("Global", ", Command: ", command, "Data: " +  data)
 
+
 func kill_bgm(fade_time: float):
 	emit_signal("stop_bgm", fade_time)
 	print("SignalManager: stopping bgm")
+
+
+func update_hud(id: int, data = ""):
+	emit_signal("hud_update", id, data)
+
+
+func _shut_the_fuck_up():#	NEVER USE THIS
+	standard_signal.emit()
+	command_signal.emit()
+	global_signal.emit()
+	ui_signal.emit()
+	stop_bgm.emit()
+	hud_update.emit()

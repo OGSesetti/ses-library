@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3fcy37yjqcv3"]
+
+[ext_resource type="PackedScene" uid="uid://du3jfl6qwyb0h" path="res://game/characters/character modules/modules/HitboxModule.tscn" id="1_n8s7g"]
+[ext_resource type="Script" path="res://game/weapons/bullets/scripts/bullet_base.gd" id="1_vc30f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8i6h"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3govg"]
+size = Vector2(2, 2)
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_vc30f")
+
+[node name="BulletRayCast" type="RayCast2D" parent="."]
+
+[node name="HitboxModule" parent="." instance=ExtResource("1_n8s7g")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxModule"]
+scale = Vector2(0.01, 0.01)
+shape = SubResource("CircleShape2D_t8i6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_3govg")

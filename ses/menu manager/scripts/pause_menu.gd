@@ -40,7 +40,7 @@ func _on_exit_to_main_menu_pressed() -> void:
 	MenuManager.global_menu_toggle_input()
 
 
-func on_ui_signal(id, cmd, data):
+func on_ui_signal(id, cmd, _data):
 	if id != signal_id:
 		return
 	else:

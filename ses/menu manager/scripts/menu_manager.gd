@@ -9,7 +9,7 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:	#delta turha?
+func _process(_delta: float) -> void:	#delta turha?
 	if Input.is_action_just_pressed("ui_cancel"):
 		global_menu_toggle_input()
 

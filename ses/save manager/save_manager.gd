@@ -7,8 +7,8 @@ var auto_save_name: String = SesConfig.auto_save_name 	#	ONE SAVE ONLY: always u
 var manual_save_name: String = SesConfig.manual_save_name #	UNLIMITED SAVES: adds a timestamp to create an unique name
 var check_overwrite = SesConfig.check_for_overwrite 			#	Doesn't do anything right now
 
-var res = SaveResource.new()
-var json = JSON.new()
+var res = SaveResource.new()#	Väärin. Älä käytä tätä
+var json = JSON.new()		#	...
 var files_list
 var path
 
@@ -41,15 +41,14 @@ func init_folder():
 	var dir = DirAccess.open(root_path)
 	if dir == null:
 		push_error("Can't find user path")
-		print("SaveManager: can't find ", root_path)
+		Ses.log(1, "SaveManager", "can't find", root_path)
 	if dir.dir_exists(path):
-		print("Save folder found")
+		Ses.log(4, "SaveManager", "Save folder found")
 	else:
 		if dir.make_dir(path) == OK:
-			print("Save folder not found. Creating one at: ", path)
+			Ses.log(2, "SaveManager", "Save folder not found. Creating one at:", path)
 		else:
-			push_error("Failed to find or create save folder")
-			print("SaveManager: ERROR: could not find or create save folder. Fuck.")
+			Ses.log(1, "SaveManager", "ERROR: Could not find or create save folder. Fuck.")
 
 func save_game(n = manual_save_name, autosave : bool = false): #	I guess you can save without the timestamp with (name, true) 
 	if n.strip_edges() == "":
@@ -61,7 +60,7 @@ func save_game(n = manual_save_name, autosave : bool = false): #	I guess you can
 		var key = property.name
 		if key not in exclude_keys:
 			data[key] = res.get(key)
-			print("SaveManager: ", key, " added to package")
+			Ses.log(0, "SaveManager", key, "added to package")		
 	var json_data = JSON.stringify(data, "\t") #	\t means pretty text
 
 	if autosave == false:	
@@ -72,7 +71,7 @@ func save_game(n = manual_save_name, autosave : bool = false): #	I guess you can
 		file_name = n + ".json"
 
 	var file = FileAccess.open(path + file_name, FileAccess.WRITE)
-	print("SaveManager: game saved at ", path, file_name)
+	Ses.log(0, "SaveManager", "game saved at: ", path+file_name)
 	file.store_string(json_data)
 	file.close()
 	files_list = get_files()
@@ -81,7 +80,6 @@ func save_game(n = manual_save_name, autosave : bool = false): #	I guess you can
 
 func auto_save():
 	save_game(auto_save_name, true)
-	pass
 
 
 func load_game(n: String = auto_save_name):
@@ -90,33 +88,33 @@ func load_game(n: String = auto_save_name):
 	n = n + ".json"
 	var data
 	var file = FileAccess.open(path + n, FileAccess.READ)
-	print("SaveManager: attempting to load: ", path, n)
+	Ses.log(0, "SaveManager", "attempting to load:", path+n)
 
 	if not file:
 		push_error("Could not find file: ", n)
-		print("SaveManager: ERROR: save file not found")
+		Ses.log(1, "SaveManager", "ERROR: Save file", n, "not found")
 		return(false)
 
 	var json_data = file.get_as_text()
-	#print(json_data)
 	var error_status = json.parse(json_data)
 
 	if error_status == OK:
 		data = json.data
-		print("SaveManager: parse successful.")
+		Ses.log(3, "SaveManager", "parse successful")
 	else:
-		push_error("Error parsing JSON-data.")
-		print("SaveManager: ERROR parsing JSON.")
+		Ses.log(1, "SaveManager", "ERROR parsing JSON.")
 
 	for key in data.keys():
-		#print(key)
 		if key in res:
 			res.set(key, data[key])
-			print("SaveManager: ", key, " set to ", "'", res.get(key),"'")
+			Ses.log(0, "SaveManager", key, "set to", res.get(key))
+
 		else:
-			print("SaveManager: ", key, " not found in res. Skipping. If every variable is giving you this shit, check the exclude_keys -array at SaveManager.")
-			pass
-	print("SaveManager: load successful")
+			Ses.log(3, "SaveManager", key, "not found in res. Skipping. If every variable is giving you this shit, check the exclude_keys -array at SaveManager.")
+			
+
+	Ses.log(3, "SaveManager","load succesful")
+
 	files_list = get_files()
 	return res
 
@@ -124,8 +122,7 @@ func load_game(n: String = auto_save_name):
 func get_files(type : int = 1): #	0 == no sorting, 1 == newest to oldest, 2 == oldest to newest
 	var file_names = []
 	var dir = DirAccess.open(path)
-	#print("print(dir): ", dir)
-	#print("dir.get_current_dir(): ", wtf)
+
 	var timestamp
 	var counter : int = 0
 	if dir == null:
@@ -146,19 +143,21 @@ func get_files(type : int = 1): #	0 == no sorting, 1 == newest to oldest, 2 == o
 		if !dir.current_is_dir():
 			if current_item != auto_save_name + ".json":
 				file_names.append(save_info)
-				print("SaveManager: ", current_item, " found")
+				Ses.log(0, "SaveManager", current_item, "found")
 				counter += 1
 
 	
 	match type:
 		0:
+			Ses.log(3, "SaveManager", counter, "fetched. Sort: none")
 			print("SaveManager: fetched ",  counter, " files unsorted")
 		1:
 			file_names.sort_custom(func(a, b): return a["Timestamp"] > b["Timestamp"])
-			print("SaveManager: fetched ",  counter, " files sorted newest to oldest")
+			Ses.log(3, "SaveManager", counter, "files fetched. Sort: new to old")
 		2:
 			file_names.sort_custom(func(a, b): return a["Timestamp"] < b["Timestamp"])
-			print("SaveManager: fetched ",  counter, " files sorted oldest to newest")
+			Ses.log(3, "SaveManager", counter, "files fetched. Sort: old to new")
+			
 	return file_names
 
 

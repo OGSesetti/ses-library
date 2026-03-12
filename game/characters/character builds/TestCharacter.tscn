@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://bstpndwmrby4a"]
+
+[ext_resource type="PackedScene" uid="uid://by3vjkun8xjde" path="res://game/characters/character modules/modules/HealthModule.tscn" id="1_bqvxe"]
+[ext_resource type="Script" path="res://game/characters/character base/test_character.gd" id="1_pcbw0"]
+[ext_resource type="PackedScene" uid="uid://dh6rnj3niuwa7" path="res://game/characters/character modules/modules/PlayerControlModule.tscn" id="2_1a7bh"]
+[ext_resource type="PackedScene" uid="uid://b3jtf0i16k6yn" path="res://game/characters/character modules/modules/MovementModule.tscn" id="3_ojuip"]
+[ext_resource type="PackedScene" uid="uid://d0v3r03qtpxv1" path="res://game/characters/character modules/modules/HurtboxModule.tscn" id="4_juefp"]
+[ext_resource type="Texture2D" uid="uid://hogq81gmfuvq" path="res://game assets/sprites/test sprites/player.png" id="5_l0cqi"]
+[ext_resource type="PackedScene" uid="uid://bemrd1ayw3iju" path="res://game/weapons/guns/pistol.tscn" id="7_rjo74"]
+[ext_resource type="PackedScene" uid="uid://c3fcy37yjqcv3" path="res://game/weapons/bullets/bullet.tscn" id="8_1qg04"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gv6e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccoht"]
+
+[node name="TestCharacter" type="CharacterBody2D"]
+scale = Vector2(0.99734, 1.00182)
+motion_mode = 1
+script = ExtResource("1_pcbw0")
+
+[node name="HealthModule" parent="." instance=ExtResource("1_bqvxe")]
+
+[node name="PlayerControlModule" parent="." instance=ExtResource("2_1a7bh")]
+
+[node name="MovementModule" parent="." node_paths=PackedStringArray("parent", "input_source") instance=ExtResource("3_ojuip")]
+parent = NodePath("..")
+input_source = NodePath("../PlayerControlModule")
+acceleration_mode = 1
+speed = 600
+acceleration = 100
+
+[node name="HurtboxModule" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("4_juefp")]
+Parent = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxModule"]
+scale = Vector2(0.305, 0.305)
+shape = SubResource("CircleShape2D_7gv6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.29)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("5_l0cqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.315, 0.315)
+shape = SubResource("CircleShape2D_ccoht")
+
+[node name="Pistol" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("7_rjo74")]
+rotation = 3.14159
+parent = NodePath("..")
+
+[node name="Bullet" parent="Pistol" instance=ExtResource("8_1qg04")]
