@@ -16,9 +16,13 @@ enum HUDElement{
 }
 
 enum Level{
-	TEST_MENU,
 	LEVEL_1,
 	LEVEL_2,
+}
+
+enum Menu{
+	TEST_MENU,
+
 }
 
 enum Weapon{

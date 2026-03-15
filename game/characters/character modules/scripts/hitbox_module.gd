@@ -17,8 +17,17 @@ var damage:int = -1
 #	Remember to check that the damage actually gets loaded properly from 'gun' to 'bullet' to 'hitbox'
 
 func _ready():
+	connect("area_entered", on_area_entered)
 	if damage < 0:
 		if "damage" in parent:#		Testaa!
 			damage = parent.damage
 		else:
 			damage = 0
+
+func on_area_entered():
+	(collision)
+	pass
+
+func collision():
+
+	pass

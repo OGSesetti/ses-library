@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5q1i8hlwpk3e"]
+[gd_scene format=3 uid="uid://b5q1i8hlwpk3e"]
 
-[ext_resource type="Script" path="res://ses/menu manager/scripts/testmenu.gd" id="1_4dhrx"]
+[ext_resource type="Script" uid="uid://cuxnqelj5xqmh" path="res://ses/menu manager/scripts/testmenu.gd" id="1_4dhrx"]
 [ext_resource type="PackedScene" uid="uid://dkn308j1srlse" path="res://ses/menu manager/scenes/common elements/loading icon.tscn" id="2_kdbey"]
 [ext_resource type="FontFile" uid="uid://du0pk1ieguc0h" path="res://game assets/fonts/AlfaSlabOne-Regular.ttf" id="3_yd6f3"]
 [ext_resource type="Texture2D" uid="uid://1gpseu6buywf" path="res://ses/menu manager/assets/severe_logo.png" id="4_0ivil"]
 
-[node name="Testmenu" type="Control"]
+[node name="Testmenu" type="Control" unique_id=2127823800]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4dhrx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1441671504]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,10 +23,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0605303, 0.0605304, 0.0605303, 1)
 
-[node name="loadingIcon" parent="." instance=ExtResource("2_kdbey")]
+[node name="loadingIcon" parent="." unique_id=831153799 instance=ExtResource("2_kdbey")]
 layout_mode = 1
 
-[node name="titlecontainer" type="MarginContainer" parent="."]
+[node name="titlecontainer" type="MarginContainer" parent="." unique_id=1389714339]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -36,7 +36,7 @@ anchor_bottom = 0.1
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="title text" type="Label" parent="titlecontainer"]
+[node name="title text" type="Label" parent="titlecontainer" unique_id=2038299675]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_yd6f3")
@@ -45,7 +45,7 @@ text = "SES-library tester"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="listContainer" type="MarginContainer" parent="."]
+[node name="listContainer" type="MarginContainer" parent="." unique_id=1416575859]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -55,20 +55,20 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="testlists" type="HBoxContainer" parent="listContainer"]
+[node name="testlists" type="HBoxContainer" parent="listContainer" unique_id=694760173]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="SaveManager" type="VBoxContainer" parent="listContainer/testlists"]
+[node name="SaveManager" type="VBoxContainer" parent="listContainer/testlists" unique_id=1510256412]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/SaveManager" unique_id=402005457]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="listContainer/testlists/SaveManager/MarginContainer"]
+[node name="Label" type="Label" parent="listContainer/testlists/SaveManager/MarginContainer" unique_id=1704433145]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.662452, 0.662452, 0.662452, 1)
@@ -76,71 +76,71 @@ theme_override_font_sizes/font_size = 32
 text = "SaveManager"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/SaveManager" unique_id=1340288494]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="manualSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer2"]
+[node name="manualSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer2" unique_id=1539856887]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Create manual save"
 
-[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/SaveManager" unique_id=1190875941]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="autoSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer3"]
+[node name="autoSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer3" unique_id=778949200]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Create autosave"
 
-[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/SaveManager" unique_id=1329841243]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="loadSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer4"]
+[node name="loadSave" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer4" unique_id=1495752362]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Load save"
 
-[node name="MarginContainer5" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+[node name="MarginContainer5" type="MarginContainer" parent="listContainer/testlists/SaveManager" unique_id=2560365]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="setResValue" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer5"]
+[node name="setResValue" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer5" unique_id=842527863]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Set res value"
 
-[node name="MarginContainer6" type="MarginContainer" parent="listContainer/testlists/SaveManager"]
+[node name="MarginContainer6" type="MarginContainer" parent="listContainer/testlists/SaveManager" unique_id=527866826]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="setResVariable" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer6"]
+[node name="setResVariable" type="Button" parent="listContainer/testlists/SaveManager/MarginContainer6" unique_id=700081440]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Set res variable"
 
-[node name="SettingsManager" type="VBoxContainer" parent="listContainer/testlists"]
+[node name="SettingsManager" type="VBoxContainer" parent="listContainer/testlists" unique_id=620758407]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/SettingsManager" unique_id=1752891708]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="listContainer/testlists/SettingsManager/MarginContainer"]
+[node name="Label" type="Label" parent="listContainer/testlists/SettingsManager/MarginContainer" unique_id=1700572082]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.662745, 0.662745, 0.662745, 1)
@@ -148,50 +148,50 @@ theme_override_font_sizes/font_size = 32
 text = "SettingsManager"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/SettingsManager" unique_id=2117191984]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="saveSettings" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer2"]
+[node name="saveSettings" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer2" unique_id=1022442993]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Save settings
 "
 
-[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/SettingsManager" unique_id=1463182502]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="loadSettings" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer3"]
+[node name="loadSettings" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer3" unique_id=1684374108]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Load settings"
 
-[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/SettingsManager"]
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/SettingsManager" unique_id=842298717]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="resetToDefaults" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer4"]
+[node name="resetToDefaults" type="Button" parent="listContainer/testlists/SettingsManager/MarginContainer4" unique_id=1617103450]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Reset to defaults"
 
-[node name="DialogueManager" type="VBoxContainer" parent="listContainer/testlists"]
+[node name="DialogueManager" type="VBoxContainer" parent="listContainer/testlists" unique_id=1185299126]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/DialogueManager" unique_id=1949239345]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="listContainer/testlists/DialogueManager/MarginContainer"]
+[node name="Label" type="Label" parent="listContainer/testlists/DialogueManager/MarginContainer" unique_id=1534066398]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.662745, 0.662745, 0.662745, 1)
@@ -199,49 +199,49 @@ theme_override_font_sizes/font_size = 32
 text = "DialogueManager"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/DialogueManager" unique_id=1031228158]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="playDialogue" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer2"]
+[node name="playDialogue" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer2" unique_id=684852512]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Play dialogue"
 
-[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/DialogueManager" unique_id=249658863]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="autoSave" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer3"]
+[node name="autoSave" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer3" unique_id=656272441]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Create autosave"
 
-[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/DialogueManager"]
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/DialogueManager" unique_id=1322053912]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="loadSave" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer4"]
+[node name="loadSave" type="Button" parent="listContainer/testlists/DialogueManager/MarginContainer4" unique_id=1125324592]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Load save"
 
-[node name="MenuManager" type="VBoxContainer" parent="listContainer/testlists"]
+[node name="MenuManager" type="VBoxContainer" parent="listContainer/testlists" unique_id=1733108231]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+[node name="MarginContainer" type="MarginContainer" parent="listContainer/testlists/MenuManager" unique_id=75548923]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="listContainer/testlists/MenuManager/MarginContainer"]
+[node name="Label" type="Label" parent="listContainer/testlists/MenuManager/MarginContainer" unique_id=764031267]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.662745, 0.662745, 0.662745, 1)
@@ -250,40 +250,40 @@ text = "MenuManager
 "
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+[node name="MarginContainer2" type="MarginContainer" parent="listContainer/testlists/MenuManager" unique_id=468150407]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="openMainMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer2"]
+[node name="openMainMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer2" unique_id=868220591]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Open main menu"
 
-[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+[node name="MarginContainer3" type="MarginContainer" parent="listContainer/testlists/MenuManager" unique_id=1162820441]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="openSettingsMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer3"]
+[node name="openSettingsMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer3" unique_id=1792594499]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Open settings menu"
 
-[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/MenuManager"]
+[node name="MarginContainer4" type="MarginContainer" parent="listContainer/testlists/MenuManager" unique_id=1695441305]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="openPauseMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer4"]
+[node name="openPauseMenu" type="Button" parent="listContainer/testlists/MenuManager/MarginContainer4" unique_id=1264711388]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Open pause menu"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=227078314]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -296,39 +296,40 @@ offset_bottom = 1012.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1906111533]
 layout_mode = 2
 
-[node name="New Game" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="New Game" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1534851333]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 text = "New Game"
 
-[node name="Load Game" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Load Game" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1553997940]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 text = "Load Game"
 
-[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1486961625]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 text = "Settings"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1260383997]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1014532223]
 position = Vector2(1715.52, 975.63)
 scale = Vector2(0.101, 0.1)
 texture = ExtResource("4_0ivil")
 
-[node name="LoadLevel" type="Button" parent="."]
+[node name="LoadLevel" type="Button" parent="." unique_id=1289339501]
+layout_mode = 0
 offset_left = 779.0
 offset_top = 738.0
 offset_right = 1093.0
@@ -336,7 +337,8 @@ offset_bottom = 791.0
 theme_override_font_sizes/font_size = 32
 text = "Load level 1"
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="." unique_id=1939721889]
+layout_mode = 0
 offset_left = 777.0
 offset_top = 811.0
 offset_right = 1091.0

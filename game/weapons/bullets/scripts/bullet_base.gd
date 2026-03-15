@@ -1,43 +1,3 @@
-"""
-TODO:
-	Irrota luoti jotenkin parentista jossa se ei seuraa sitä.
-
-
-
-Pseudokooditime:
-
-	Signaali: Osuma
-
-	funktio: ready:
-		Ota damage, projectile_speed ja mahdollisesti lifetime aseelta
-		Ota sijainti ja rotaatio aseelta
-		Spawnaa		*Voi olla että tää kaikki pitää tehdä aseen puolella
-
-	funktio: process:
-		Jos luodin hitbox collidee objektin kanssa:
-			osumalogiikka(osumakohde)
-
-		Tee raycast, joka tarkistaa onko luodin nykyisen sijainnin ja seuraavan tickin sijainnin välissä estettä
-		Jos on:
-			Luodin seuraava sijainti onkin raycastin osumakohdan sijainti
-		Jos ei:
-			Luodin sijainti määräytyy nopeuden ja kulman perusteella kuten normaalisti
-
-
-	funktio: osumalogiikka(osumakohde):
-		*Damaget ja muut tapahtuu vastaanottajan puolella.
-
-		Lähetä signaali(Osuma) *Mahdollisille moduuleille esim. ricochea ja animaatioita varten
-
-		*JOS vastaanottavalla objektilla ei ole aikaa lukea luodin tietoja, tee funktio joka sammuttaa collisiot ja raycastin,
-		tekee luodista näkymättömän, asettaa nopeuden nollaan ja odottaa yhden framen. Tälle ei pitäisi olla tarvetta mutta ei tästä
-		vitun moottorista ikinä tiiä
-
-		Poista luoti
-
-"""
-
-
 extends CharacterBody2D
 class_name Bullet
 
@@ -59,7 +19,7 @@ func _process(delta:float):
 	move_and_collide(velocity)
 
 func _bullet_process(delta):
-	if hitbox.is_colliding():#	Olisko parempi kuunnella signaalia?
+	if hitbox.on_area_entered():#	Olisko parempi kuunnella signaalia?
 		_collision_event()	
 
 
@@ -79,3 +39,5 @@ func _bullet_process(delta):
 
 func _collision_event():
 	queue_free()
+
+

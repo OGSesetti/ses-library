@@ -30,8 +30,6 @@ SaveManager="*res://ses/save manager/save_manager.gd"
 SesApi="res://ses/core components/ses_middleware.gd"
 SettingsManager="*res://ses/settings manager/scripts/settings_manager.gd"
 SignalManager="*res://ses/core components/signal_manager.gd"
-MenuManager="*res://ses/menu manager/scenes/menu_manager.tscn"
-LevelIndex="*res://game/scripts/level_index.gd"
 GameObject="*res://game/data/game_object_reference.gd"
 
 [display]

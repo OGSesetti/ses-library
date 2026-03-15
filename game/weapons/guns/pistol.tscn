@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bemrd1ayw3iju"]
+[gd_scene format=3 uid="uid://bemrd1ayw3iju"]
 
-[ext_resource type="Script" path="res://game/weapons/guns/scripts/pistol.gd" id="1_ryphr"]
+[ext_resource type="Script" uid="uid://u3hsn2we5k1c" path="res://game/weapons/guns/scripts/pistol.gd" id="1_ryphr"]
 
-[node name="Pistol" type="Node2D"]
+[node name="Pistol" type="CharacterBody2D" unique_id=860702386]
 script = ExtResource("1_ryphr")

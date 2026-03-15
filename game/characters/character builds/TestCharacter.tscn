@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bstpndwmrby4a"]
+[gd_scene format=3 uid="uid://bstpndwmrby4a"]
 
 [ext_resource type="PackedScene" uid="uid://by3vjkun8xjde" path="res://game/characters/character modules/modules/HealthModule.tscn" id="1_bqvxe"]
-[ext_resource type="Script" path="res://game/characters/character base/test_character.gd" id="1_pcbw0"]
+[ext_resource type="Script" uid="uid://bsgby8eaw35l1" path="res://game/characters/character base/test_character.gd" id="1_pcbw0"]
 [ext_resource type="PackedScene" uid="uid://dh6rnj3niuwa7" path="res://game/characters/character modules/modules/PlayerControlModule.tscn" id="2_1a7bh"]
 [ext_resource type="PackedScene" uid="uid://b3jtf0i16k6yn" path="res://game/characters/character modules/modules/MovementModule.tscn" id="3_ojuip"]
 [ext_resource type="PackedScene" uid="uid://d0v3r03qtpxv1" path="res://game/characters/character modules/modules/HurtboxModule.tscn" id="4_juefp"]
@@ -13,40 +13,41 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccoht"]
 
-[node name="TestCharacter" type="CharacterBody2D"]
+[node name="TestCharacter" type="CharacterBody2D" unique_id=1655293465]
 scale = Vector2(0.99734, 1.00182)
 motion_mode = 1
 script = ExtResource("1_pcbw0")
 
-[node name="HealthModule" parent="." instance=ExtResource("1_bqvxe")]
+[node name="HealthModule" parent="." unique_id=1135553841 instance=ExtResource("1_bqvxe")]
 
-[node name="PlayerControlModule" parent="." instance=ExtResource("2_1a7bh")]
+[node name="PlayerControlModule" parent="." unique_id=861485653 instance=ExtResource("2_1a7bh")]
 
-[node name="MovementModule" parent="." node_paths=PackedStringArray("parent", "input_source") instance=ExtResource("3_ojuip")]
+[node name="MovementModule" parent="." unique_id=328269422 node_paths=PackedStringArray("parent", "input_source") instance=ExtResource("3_ojuip")]
 parent = NodePath("..")
 input_source = NodePath("../PlayerControlModule")
 acceleration_mode = 1
 speed = 600
 acceleration = 100
 
-[node name="HurtboxModule" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("4_juefp")]
+[node name="HurtboxModule" parent="." unique_id=1044053880 node_paths=PackedStringArray("Parent", "health_module") instance=ExtResource("4_juefp")]
 Parent = NodePath("..")
+health_module = NodePath("../HealthModule")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxModule"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxModule" unique_id=1139292304]
 scale = Vector2(0.305, 0.305)
 shape = SubResource("CircleShape2D_7gv6e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1835045092]
 position = Vector2(0, -0.29)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("5_l0cqi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=691608133]
 scale = Vector2(0.315, 0.315)
 shape = SubResource("CircleShape2D_ccoht")
 
-[node name="Pistol" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("7_rjo74")]
+[node name="Pistol" parent="." unique_id=1415381158 node_paths=PackedStringArray("parent") instance=ExtResource("7_rjo74")]
 rotation = 3.14159
 parent = NodePath("..")
 
-[node name="Bullet" parent="Pistol" instance=ExtResource("8_1qg04")]
+[node name="Bullet" parent="Pistol" unique_id=140669513 instance=ExtResource("8_1qg04")]
