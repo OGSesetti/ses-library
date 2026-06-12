@@ -41,19 +41,19 @@ func _on_button_pressed(b: String):
 	print(b)
 	match b:
 		"manualSave":#1
-			Ses.manual_save()
+			SaveManager.save_game()
 
 		"autoSave":#2
-			Ses.auto_save()
+			SaveManager.auto_save()
 
 		"loadSave":#3
-			Ses.load_save()
+			SaveManager.load_game()
 
 		"setResValue":#4
-			Ses.save_res_set("name", "Stonie")
+			SaveManager.set_res_value("name", "Stonie")
 
 		"setResVariable":#5
-			Ses.save_res_var("BigBoss", "Adam Richman")
+			SaveManager.set_res_variable("BigBoss", "Adam Richman")
 
 		"saveSettings":#6
 			pass
@@ -87,7 +87,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_load_level_pressed() -> void:
-	Main.load_level(LevelIndex.Level1)
+	SignalManager.send_command("Main", "load_level", Game.level_1)
 
 
 func _on_exit_pressed() -> void:

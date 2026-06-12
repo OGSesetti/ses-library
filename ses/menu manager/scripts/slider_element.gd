@@ -17,4 +17,4 @@ func _ready() -> void:
 
 func _on_slider_value_changed(value:float) -> void:
 	assigned_setting.current_value = value
-	print("SliderElement: ",assigned_setting.id," set at: ",assigned_setting.current_value)
+#	print("SliderElement: ",assigned_setting.id," set at: ",assigned_setting.current_value)

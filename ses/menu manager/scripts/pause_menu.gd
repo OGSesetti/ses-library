@@ -1,6 +1,5 @@
 extends Control
 # Right now button padding is done just by adding spaces to the left of the text. I don't want to bother to do it properly from the overrides, so keep this in mind when making themes/styles
-
 var uses_signals = true
 var signal_id = "pause_menu"
 
@@ -36,11 +35,11 @@ func _on_settings_pressed() -> void:
 
 
 func _on_exit_to_main_menu_pressed() -> void:
-	Main.load_level(LevelIndex.TestMenu)
-	MenuManager.global_menu_toggle_input()
+	SignalManager.send_ui("menu_manager", "menu_button_input", "")
+	SignalManager.send_command("Main", "load_menu", Game.menu_test_menu)
 
 
-func on_ui_signal(id, cmd, data):
+func on_ui_signal(id, cmd, _data):
 	if id != signal_id:
 		return
 	else:

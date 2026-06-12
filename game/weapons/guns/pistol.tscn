@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bemrd1ayw3iju"]
+
+[ext_resource type="Script" uid="uid://u3hsn2we5k1c" path="res://game/weapons/guns/scripts/pistol.gd" id="1_ryphr"]
+
+[node name="Pistol" type="CharacterBody2D" unique_id=860702386]
+position = Vector2(4, 0)
+script = ExtResource("1_ryphr")
+projectile_speed = 6000.0
+
+[node name="BulletSpawnPoint" type="Area2D" parent="." unique_id=392022335]
+unique_name_in_owner = true

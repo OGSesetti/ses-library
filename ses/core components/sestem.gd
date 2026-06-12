@@ -1,5 +1,7 @@
 extends Node
 
+var root_path:="user://"
+var dump_path:="user://dumps/"
 
 func _colorize_text(color:int, text:String):
 	var color_start := "[color=white]"
@@ -29,6 +31,50 @@ func print_color(color:int, text: String):
 	print(result)
 
 
+func generate_name_based_on_datetime(name:String, space:=""):
+	var dt = get_datetime_string_formatted()
+	var unique_name = name + space + dt + ".txt"
+	return unique_name
+
+
+func create_dump_file(text:=""):
+	var name = generate_name_based_on_datetime("DUMP")
+	change_or_create_folder("dumps")
+	var path = root_path +"dumps/"+ name
+	create_text_file(path, text)	
+
+
+func change_or_create_folder(folder_name:String):
+	var folder = DirAccess.open(root_path + folder_name)
+	if folder != null:
+		return folder
+	else:
+		folder = DirAccess.make_dir_absolute(root_path + folder_name)
+		return folder
+
+
+#	MUUTA TOI WAIT_SECONDS
+#	JA SIT VOI KANS OLLA WAIT MINUTES
+#	TAI HOURS
+#	DAYS
+#	UNTIL FURTHER NOTICE
+func wait(seconds:float):
+	await get_tree().create_timer(seconds).timeout
+
+
+func create_text_file(file_path:String, data: String):
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	if file == null:
+		Ses.log(1, "Sestem", "Error at create_text_file():", file_path, "was null")
+		return 1
+	if data is String:
+		file.store_string(data)
+		return 0
+	else:
+		Ses.log(1, "Failed to create text file: parameter 'data' needs to be String")
+		return 1
+
+
 func log(color:int, source_name: String, data_1 = "", data_2 = "", data_3 = "", data_4 = "", data_5 = ""):
 	var bracketed_source
 	match SesConfig.log_brackets:
@@ -43,16 +89,6 @@ func log(color:int, source_name: String, data_1 = "", data_2 = "", data_3 = "", 
 	print_rich(result, " ", data_1, " ", data_2, " ", data_3, " ", data_4, " ", data_5)
 
 
-func error():
-	print_rich("[color=red] Warning:[/color] This is a warning")
-
-
-func warning():
-	print_rich("[color=yellow] Warning:[/color] This is a warning")
-
-
-func success():
-	print_rich("[color=green] Warning:[/color] This is a warning")
 
 
 func save_json(data, path: String):
@@ -64,7 +100,7 @@ func save_json(data, path: String):
 	if data is String:
 		file.store_string(data)
 	else:
-		file.store_string(JSON.stringify(data, "\t"))	#	 "\t" means pretty!
+		file.store_string(JSON.stringify(data, "\t"))	#	 "\t" means pretty! -Eli siis formatoi jsonin rivit nätiksi
 	#	file.store_string(data)	#
 
 	file.close()
@@ -127,10 +163,9 @@ func get_datetime_string_formatted(utc: bool = false):
 	]
 	return dt_str
 
-"""
+
 #SaveManager
 #	Muuta näitä nyt jumalauta
-var res = SaveManager.res
 
 func manual_save(s = ""):
 	SaveManager.save_game(s)
@@ -148,10 +183,10 @@ func save_res_set_var(k, v):
 	SaveManager.set_res_variable(k, v)
 
 func save_res_read(k: String):
-	return res.get(k)
+	return SaveManager.res.get(k)
 
 func save_res_read_var(k):
-	return res.variables.get(k)
+	return SaveManager.res.variables.get(k)
 
 #/SaveManager
 
@@ -170,4 +205,3 @@ func open_settings():
 	SignalManager.send_ui("menu_manager", "toggle", "settings")
 
 #/MenuManager
-"""

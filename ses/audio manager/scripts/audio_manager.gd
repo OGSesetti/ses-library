@@ -91,40 +91,6 @@ func play_locational(location: Vector2, type: SoundEffect.sound_effect_type, vol
 		push_error("AudioManager failed to find settings for type: ", type)
 
 
-func play_song():
-	pass
-
-func stop_song():
-	pass
-
-func play_bgm():
-	pass
-
-func stop_bgm():
-	pass
-
-func switch_bgm():
-	pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 """

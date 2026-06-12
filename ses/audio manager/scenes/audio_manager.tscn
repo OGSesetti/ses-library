@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://22nm7ay1m853"]
+[gd_scene format=3 uid="uid://22nm7ay1m853"]
 
-[ext_resource type="Script" path="res://ses/audio manager/scripts/audio_manager.gd" id="1_w6lly"]
+[ext_resource type="Script" uid="uid://xxuvqfekw78s" path="res://ses/audio manager/scripts/audio_manager.gd" id="1_w6lly"]
+[ext_resource type="Script" uid="uid://h257xgr83mcf" path="res://ses/audio manager/scripts/sound_effect_settings.gd" id="2_xw48d"]
 
-[node name="AudioManager" type="Node2D"]
+[sub_resource type="Resource" id="Resource_o5dgj"]
+script = ExtResource("2_xw48d")
+metadata/_custom_type_script = "uid://h257xgr83mcf"
+
+[node name="AudioManager" type="Node2D" unique_id=227516687]
 script = ExtResource("1_w6lly")
+sound_effects = Array[ExtResource("2_xw48d")]([SubResource("Resource_o5dgj")])

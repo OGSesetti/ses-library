@@ -5,7 +5,6 @@ var signal_id = "settings_menu"#	vaihda settings_menu
 @export var active = false
 
 var SettingsData = SettingsList
-#var SettingsData = SettingsManager.SettingsData
 
 var settings_checkbox = preload("res://ses/menu manager/scenes/global menus/settings menu/settings elements/checkbox_element.tscn")
 var settings_slider = preload("res://ses/menu manager/scenes/global menus/settings menu/settings elements/slider_element.tscn")
