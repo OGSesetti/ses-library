@@ -1,38 +1,48 @@
 extends Node
 
 var LevelIndex = GameEnums.Level
-@onready var Main = $self
-@onready var level_environment = $World2D
-@onready var ui_environment = $UiEnvironment
+#@onready var Main = $self
+#@onready var level_environment = $%World2D
+#@onready var ui_environment = $%UiEnvironment
+#@onready var menu_manager = $%MenuManager
+
+var main
+var level_environment
+var ui_environment
+var menu_manager
 
 var uses_signals = true
 var thread: Thread
 
 var loaded_resource: PackedScene = null
-#var loading_screen: PackedScene = null
 
 
 func _ready():
-	#print("Main: LevelIndex: ", LevelIndex)
-	#print("Main: LevelIndex.LEVEL_!:", LevelIndex.LEVEL_1)
-	load_level(GameEnums.Menu.TEST_MENU)
+	main = self
+	level_environment = $World2D
+	ui_environment = $UiEnvironment
+	menu_manager = $%MenuManager
+
+	ui_environment.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	menu_manager.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	load_menu(Game.menu_test_menu)
+
 
 func change_level(level_enum: int):
 	var loaded_level = _load_level_scene(level_enum)
 	get_tree().change_scene_to_packed(loaded_level)
 
-#	ResourceLoader can be used asynchronously. Using load() stops the thread completely until the load is ready.
-#	Callaa:	Main._load_level_scene(Main.LevelIndex.LEVEL_1) tai (GameEnums.Level.LEVEL_1)
 
 
-func load_level(level_name: int):
-	clear_current_level()
-	var level_scene = _load_level_scene(level_name)
+func load_level(level_name: String):
+	clear_all()
+	var level_scene = load(level_name)
 	var level_instance = level_scene.instantiate()
 	level_environment.add_child(level_instance)
 
-func func_load_menu(menu: int):
-	var menu_scene = _load_level_scene(menu)
+func load_menu(menu_name: String):
+	clear_all()
+	var menu_scene: PackedScene = load(menu_name)
 	var menu_instance = menu_scene.instantiate()
 	ui_environment.add_child(menu_instance)
 
@@ -46,7 +56,6 @@ func _load_menu_scene(menu_enum: int):
 		return
 	if menu is PackedScene:
 		return menu
-
 
 
 func _load_level_scene(level_enum: int):
@@ -64,8 +73,16 @@ func _load_level_scene(level_enum: int):
 func clear_current_level():
 	for child in level_environment.get_children():
 		child.queue_free()
+
+
+func clear_current_menu():
 	for element in ui_environment.get_children():
 		element.queue_free()
+
+
+func clear_all():
+	clear_current_level()
+	clear_current_menu()
 
 
 func on_command_signal(id, command, data):
@@ -74,5 +91,6 @@ func on_command_signal(id, command, data):
 			match command:
 				"load_level":
 					load_level(data)
-
+				"load_menu":
+					load_menu(data)
 	

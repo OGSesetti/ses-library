@@ -24,9 +24,9 @@ func _ready():
 		else:
 			damage = 0
 
-func on_area_entered():
-	(collision)
-	pass
+func on_area_entered(collider):
+	collision()
+	
 
 func collision():
 

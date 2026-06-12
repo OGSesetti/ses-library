@@ -9,6 +9,7 @@ script = ExtResource("1_2jx8v")
 [node name="World2D" type="Area2D" parent="." unique_id=2103743909]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World2D" unique_id=616494028]
+visible = false
 
 [node name="UiEnvironment" type="Control" parent="." unique_id=1734009914]
 layout_mode = 3
@@ -19,3 +20,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MenuManager" parent="." unique_id=371902749 instance=ExtResource("2_jbjdl")]
+unique_name_in_owner = true
+visible = false

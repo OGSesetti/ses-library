@@ -1,6 +1,7 @@
 extends Node
 
 enum ActionInput{
+	NULL,
 	ATTACK,
 	RELOAD,
 	DODGE,

@@ -24,9 +24,8 @@ var mute_command: bool = SesConfig.mute_command_signals
 var mute_global: bool = SesConfig.mute_global_signals
 var mute_ui: bool = SesConfig.mute_ui_signals
 
-var print_node_added = false
+var print_node_added = false	#	Unimportant. Enable for debugging
 
-#	Don't fucking remove these
 signal standard_signal
 signal command_signal
 signal global_signal
@@ -36,30 +35,27 @@ signal hud_update
 
 var print_new_connections: bool = false
 
-
 var signal_names =[
 "standard_signal",	#	id, data, mute
 "command_signal",	#	id, command, data
 "global_signal",	#	event, data (for more globally used signals)
 "ui_signal"	,		#	command but for UI
-"kill_bgm",			#	kills background music
 "hud_update",
 ]
-
-
-
 
 
 func _ready():
 	get_tree().connect("node_added", Callable(self, "_on_node_added"))
 	scan_existing_nodes(get_tree().root)
 
+
 func scan_existing_nodes(root: Node):
 	for child in root.get_children():
 		_on_node_added(child)
 		scan_existing_nodes(child)
 
-func _on_node_added(node: Node):	#	tätä voisi siivota
+
+func _on_node_added(node: Node):
 	var uses_signals = false
 	if print_node_added == true:
 		print("SignalManager: Node found: ", node)
@@ -134,3 +130,4 @@ func _shut_the_fuck_up():#	NEVER USE THIS
 	ui_signal.emit()
 	stop_bgm.emit()
 	hud_update.emit()
+

@@ -88,15 +88,20 @@ func _load_values_from_file(loaded_res):
 	Ses.log(3, "SettingsManager", "Successfully loaded", saved_setting_counter, "out of", default_setting_counter, "settings")
 	return
 
+
 func create_save_data():
 	DirAccess.remove_absolute(save_path)
 	var result:int = ResourceSaver.save(default_settings, save_path)
 	return result
 
+
 func save_settings():
 	var result:int = ResourceSaver.save(runtime_settings, save_path)
 	return result
 
+
+
+# Jos oma setting_res on kopio eikä reference:
 func set_setting(s: Setting, value):
 	edit_setting_from_id(s.id, value)
 

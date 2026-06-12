@@ -6,13 +6,12 @@ var signal_id = "menu_manager"
 var active_menu = 0
 
 func _ready() -> void:
-	pass
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func _process(_delta: float) -> void:	#delta turha?
 	if Input.is_action_just_pressed("ui_cancel"):
 		global_menu_toggle_input()
-
 
 
 
@@ -37,7 +36,8 @@ func on_ui_signal(id, cmd, data):
 		match cmd:
 			"toggle":
 				toggle(data)
-
+			"menu_button_input":
+				global_menu_toggle_input()
 
 
 func toggle(m):

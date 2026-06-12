@@ -1,6 +1,7 @@
 extends CharacterModule
 class_name HealthModule
 
+@export var parent: CharacterBody2D
 @export var value_hud_connection: GameEnums.HUDElement = GameEnums.HUDElement.NONE
 @export var max_value_hud_connection: GameEnums.HUDElement = GameEnums.HUDElement.NONE
 @export var value: float
@@ -16,7 +17,7 @@ signal max_value_changed(max_value)
 
 
 func death():
-	queue_free()
+	parent.queue_free()
 
 
 func set_value(amount:float, override := over_heal_default_setting):

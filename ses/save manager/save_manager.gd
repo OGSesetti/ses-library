@@ -7,12 +7,13 @@ var auto_save_name: String = SesConfig.auto_save_name 	#	ONE SAVE ONLY: always u
 var manual_save_name: String = SesConfig.manual_save_name #	UNLIMITED SAVES: adds a timestamp to create an unique name
 var check_overwrite = SesConfig.check_for_overwrite 			#	Doesn't do anything right now
 
-var res = SaveResource.new()#	Väärin. Älä käytä tätä
+var res = SaveResource.new()
 var json = JSON.new()		#	...
 var files_list
 var path
 
 var exclude_keys = [
+
 
 #	All keys related to the inner workings of the Resource need to be excluded. 
 #	Otherwise they get saved to the JSON as empty values. Loading a save will then delete
@@ -82,17 +83,17 @@ func auto_save():
 	save_game(auto_save_name, true)
 
 
-func load_game(n: String = auto_save_name):
-	if n == "":
-		n = auto_save_name
-	n = n + ".json"
+func load_game(name: String = auto_save_name):
+	if name == "":
+		name = auto_save_name
+	name = name + ".json"
 	var data
-	var file = FileAccess.open(path + n, FileAccess.READ)
-	Ses.log(0, "SaveManager", "attempting to load:", path+n)
+	var file = FileAccess.open(path + name, FileAccess.READ)
+	Ses.log(0, "SaveManager", "attempting to load:", path+name)
 
 	if not file:
-		push_error("Could not find file: ", n)
-		Ses.log(1, "SaveManager", "ERROR: Save file", n, "not found")
+		push_error("Could not find file: ", name)
+		Ses.log(1, "SaveManager", "ERROR: Save file", name, "not found")
 		return(false)
 
 	var json_data = file.get_as_text()

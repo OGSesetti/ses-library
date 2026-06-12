@@ -87,7 +87,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_load_level_pressed() -> void:
-	SignalManager.send_command("Main", "load_level", Game.Level.LEVEL_1)
+	SignalManager.send_command("Main", "load_level", Game.level_1)
 
 
 func _on_exit_pressed() -> void:

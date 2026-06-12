@@ -44,7 +44,6 @@ func create_dump_file(text:=""):
 	create_text_file(path, text)	
 
 
-
 func change_or_create_folder(folder_name:String):
 	var folder = DirAccess.open(root_path + folder_name)
 	if folder != null:
@@ -53,6 +52,14 @@ func change_or_create_folder(folder_name:String):
 		folder = DirAccess.make_dir_absolute(root_path + folder_name)
 		return folder
 
+
+#	MUUTA TOI WAIT_SECONDS
+#	JA SIT VOI KANS OLLA WAIT MINUTES
+#	TAI HOURS
+#	DAYS
+#	UNTIL FURTHER NOTICE
+func wait(seconds:float):
+	await get_tree().create_timer(seconds).timeout
 
 
 func create_text_file(file_path:String, data: String):
@@ -93,7 +100,7 @@ func save_json(data, path: String):
 	if data is String:
 		file.store_string(data)
 	else:
-		file.store_string(JSON.stringify(data, "\t"))	#	 "\t" means pretty!
+		file.store_string(JSON.stringify(data, "\t"))	#	 "\t" means pretty! -Eli siis formatoi jsonin rivit nätiksi
 	#	file.store_string(data)	#
 
 	file.close()
